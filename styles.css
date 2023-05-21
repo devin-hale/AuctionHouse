@@ -85,14 +85,17 @@ body {
     display: grid;
     grid-template-rows: 2fr 2fr .25fr;
     background-color: #713f12;
+    background-image: url(assets/AH.webp);
     box-shadow: inset 0px 0px 10px 5px #1b0a00a4;
 
 }
 
 #landingInfo {
     background-color: #ca8a04;
-    box-shadow: inset 0px 0px 10px 5px #1b0a00a4;
+    box-shadow: 0px 0px 10px 2px var(--shadow-color);
     margin: 20px;
+    border-radius: 5px;
+    
 }
 
 #footer {
