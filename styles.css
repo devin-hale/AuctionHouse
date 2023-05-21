@@ -6,11 +6,14 @@
     color: #fffbeb;
 }
 
+html {
+    background: url(assets/siteBKG.png) no-repeat center center fixed;
+    background-size: cover;
+}
+
 body {
-    background-color: #713f12;
-    background-image: url(assets/siteBKG.png);
     display: grid;
-    grid-template-rows: .05fr 1fr;
+    grid-template-rows: .05fr 1fr 1fr;
     height: 100vh;
     width: 100vw;
 }
@@ -40,7 +43,7 @@ body {
 }
 
 #logo {
-    padding: 10px;
+    padding: 8.5px;
     background-color: rgba(46, 16, 1, 0.85);
     border-radius: 15px;
     border-top-right-radius: 0px;
@@ -92,11 +95,7 @@ body {
 
 #siteBody {
     display: grid;
-    grid-template-rows: 2fr 2fr .25fr;
-    box-shadow: inset 0px 0px 10px 5px #1b0a00a4;
-    height: 100vh;
-    width: 100vw;
-
+    grid-template-rows: 1fr 1fr;
 }
 
 #landingInfo {
@@ -141,4 +140,8 @@ body {
     object-fit: cover;
     max-height: 450px;
     align-self: flex-end;
+}
+
+#footer {
+    min-height: 25px;
 }
