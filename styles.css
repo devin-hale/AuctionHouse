@@ -86,13 +86,35 @@ body {
     border-radius: 15px;
 }
 
-.navLink:hover {
+.navLink:hover, #cart:hover {
     cursor: pointer;
     transition: .25s;
     background-color: #743120;
     font-size: 110%;
     box-shadow: 0px 0px 15px 5px var(--shadow-color), inset 0px 0px 10px 5px #1b0a00a4;
     
+}
+
+#cart {
+    transition: .25s;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    border-radius: 15px;
+}
+
+#yourCartText {
+    margin-right: 7.5px;
+    margin-left: 7.5px;
+}
+
+#cartImage {
+    margin-bottom: 7.5px;
+}
+
+#cartNumber {
+    color: #fbbf24;
+    margin-right: 7.5px;
 }
 
 #siteBody {
