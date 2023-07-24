@@ -1,0 +1,32 @@
+{
+    "items": [
+        {
+            "id":1,
+            "name": "Sulfuras, Hand of Ragnaros",
+            "img" : "./assets/itemIMG/sulfuras.jpg",
+            "quality": 3,
+            "type": "Weapon",
+            "stats1": "+12 Strength",
+            "stats2": "+12 Stamina",
+            "description": "Chance on hit: Hurls a fiery ball that causes 273 to 333 Fire damage and an additional 75 damage over 10 sec.",
+            "priceG": 33,
+            "priceS": 26,
+            "priceC": 23
+            
+        },
+        {
+            "id":1,
+            "name": "",
+            "img" : "",
+            "quality": 0,
+            "type": "",
+            "stats1": "",
+            "stats2": "",
+            "description": "",
+            "priceG": 1,
+            "priceS": 1,
+            "priceC": 2
+            
+        }
+    ]
+}
