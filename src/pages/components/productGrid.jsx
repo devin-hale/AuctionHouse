@@ -5,10 +5,11 @@ import { addProduct } from '../cartSlice';
 
 export const ProductGrid = () => {
   const cart = useSelector((state) => state.cart.value)
+  const cartTotal = useSelector(state => state.cart.total);
   const itemDB = itemData;
   const dispatch = useDispatch();
 
-  console.log(cart)
+  console.log(cartTotal)
   
   const ItemDiv = () => itemDB.items.map(item => {
     return <div key={item.id}>
