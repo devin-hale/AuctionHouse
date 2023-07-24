@@ -1,15 +1,14 @@
 import itemData from './../../data.JSON'
 import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux'
-import { addProduct } from '../cartSlice';
+import { addProduct } from './cartSlice';
 
 export const ProductGrid = () => {
   const cart = useSelector((state) => state.cart.value)
-  const cartTotal = useSelector(state => state.cart.total);
   const itemDB = itemData;
   const dispatch = useDispatch();
 
-  console.log(cartTotal)
+  console.log(cart)
   
   const ItemDiv = () => itemDB.items.map(item => {
     return <div key={item.id}>
