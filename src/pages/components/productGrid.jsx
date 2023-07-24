@@ -1,7 +1,7 @@
 import itemData from './../../data.JSON'
 import Image from 'next/image';
 
-export const Data = () => {
+export const ProductGrid = () => {
   const itemDB = itemData;
   
   const ItemDiv = () => itemDB.items.map(item => {
