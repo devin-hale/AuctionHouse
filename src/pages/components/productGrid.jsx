@@ -1,8 +1,14 @@
 import itemData from './../../data.JSON'
 import Image from 'next/image';
+import { useSelector, useDispatch } from 'react-redux'
+import { addProduct } from '../cartSlice';
 
 export const ProductGrid = () => {
+  const cart = useSelector((state) => state.cart.value)
   const itemDB = itemData;
+  const dispatch = useDispatch();
+
+  console.log(cart)
   
   const ItemDiv = () => itemDB.items.map(item => {
     return <div key={item.id}>
@@ -26,7 +32,9 @@ export const ProductGrid = () => {
           
         </div>
         <div className=" m-auto">
-          <button type="button">Add to Cart</button>
+          <button type="button" onClick={() => {
+            dispatch(addProduct(item));
+          }}>Add to Cart</button>
         </div>
       </div>
     </div>
