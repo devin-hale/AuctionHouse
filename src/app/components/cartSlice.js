@@ -18,7 +18,7 @@ export const cartSlice = createSlice({
       const itemIndex = state.value.findIndex(
         (obj) => obj.item.id === action.payload.id
       );
-      state.value.slice(itemIndex, itemIndex + 1);
+      state.value.splice(itemIndex, itemIndex + 1);
     },
     incrementProduct: (state, action) => {
       const itemIndex = state.value.findIndex(
@@ -30,9 +30,8 @@ export const cartSlice = createSlice({
       const itemIndex = state.value.findIndex(
         (obj) => obj.item.id === action.payload.id
       );
-      state.value[itemIndex].amount -= 1;
-      if (state.value[itemIndex].amount < 1)
-        state.value.slice(itemIndex, itemIndex + 1);
+      if (state.value[itemIndex].amount == 0) {
+      } else state.value[itemIndex].amount -= 1;
     },
   },
 });
