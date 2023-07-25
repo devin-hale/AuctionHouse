@@ -1,3 +1,4 @@
+"use client"
 import itemData from './../../data.JSON'
 import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux'
