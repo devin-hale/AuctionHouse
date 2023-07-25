@@ -4,7 +4,6 @@ import { ProductGrid } from "../components/productGrid";
 const ShoppingPage = () => {
   return (
     <>
-      <NavBar />
       <p>This is the shop page.</p>
       <ProductGrid />
     </>

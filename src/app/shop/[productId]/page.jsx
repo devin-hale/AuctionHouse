@@ -26,7 +26,6 @@ const ProductDetail = ({ params }) => {
 
   return (
     <>
-      <NavBar />
       <div className=" p-2 border-2 bg-black border-white border-solid w-[80%] m-auto flex flex-col justify-between min-h-[400px]">
         <div>
           <p className="text-[25px]" style={{ color: `${itemColor(item)}` }}>
