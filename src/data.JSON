@@ -5,7 +5,7 @@
             "name": "Sulfuras, Hand of Ragnaros",
             "img" : "/assets/itemIMG/sulfuras.jpg",
             "level" : "Requires level 60.",
-            "quality": 3,
+            "quality": 4,
             "type": "Weapon",
             "stats1": "+12 Strength",
             "stats2": "+12 Stamina",
