@@ -13,7 +13,7 @@ export const ProductGrid = () => {
   
   const ItemDiv = () => itemDB.items.map(item => {
     return <div key={item.id}>
-      <div className='border-solid border-white border-2 h-[250px] grid grid-cols-1 text-center'>
+      <div className='border-solid border-white border-2 h-[250px] grid grid-cols-1 m-auto text-center max-w-[250px]'>
         <p className=" m-auto">{item.name}</p>
         <Image className='m-auto' width={80} height={80} src={item.img} alt="" />
         <p className=" m-auto">{item.type}</p>
@@ -42,7 +42,7 @@ export const ProductGrid = () => {
   })
 
   return (
-    <div className='grid grid-cols-3 gap-10'>
+    <div className='grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  m-auto'>
       <ItemDiv />
     </div>
   );
