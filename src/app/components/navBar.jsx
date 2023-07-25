@@ -9,7 +9,7 @@ const NavBar = () => {
     const cartAmount = cart.reduce((accumulator, currentItem) => accumulator + currentItem.amount, 0)
 
     return <>
-    <div className=" w-[80%] border-2 flex flex-row justify-evenly border-white border-solid">
+    <div className=" w-[80%] border-2 flex flex-row justify-evenly border-white border-solid m-auto">
         <Link className="hover:bg-red-300" href="/">Home</Link>
         <Link className="hover:bg-red-300" href="/shop">Shop</Link>
         <Link className="hover:bg-red-300" href="/cart">Cart ({cartAmount})</Link>

@@ -3,19 +3,28 @@ import itemData from './../../data.JSON'
 import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux'
 import { addProduct } from './cartSlice';
+import ProductDetail from '../shop/[productId]/page';
+import { useRouter } from 'next/navigation';
 
 export const ProductGrid = () => {
   const cart = useSelector((state) => state.cart.value)
   const itemDB = itemData;
   const dispatch = useDispatch();
+  const router = useRouter();
+
+  const routerPush = (item) => {
+    router.push(`/shop/${item.id}`)
+  }
 
   console.log(cart)
   
   const ItemDiv = () => itemDB.items.map(item => {
     return <div key={item.id}>
-      <div className='border-solid border-white border-2 h-[250px] grid grid-cols-1 m-auto text-center max-w-[250px]'>
+      <div className='border-solid border-white border-2 h-[250px] grid grid-cols-1 m-auto text-center max-w-[250px] cursor-pointer'
+      onClick={() => routerPush(item)}
+      >
         <p className=" m-auto">{item.name}</p>
-        <Image className='m-auto' width={80} height={80} src={item.img} alt="" />
+        <Image className='m-auto rounded' width={80} height={80} src={item.img} alt="" />
         <p className=" m-auto">{item.type}</p>
         <div className='flex flex-row flex-nowrap items-center m-auto w-[100%] h-[100%] justify-evenly border-solid border-white border-2'>
           <div className='flex flex-row flex-nowrap w-[50px] max-h-[20px] align-middle justify-evenly'>
