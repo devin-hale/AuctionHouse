@@ -38,7 +38,12 @@ export const ProductGrid = () => {
             className="border-solid border-white border-2 h-[250px] grid grid-cols-1 m-auto text-center max-w-[250px] cursor-pointer"
             onClick={() => routerPush(item)}
           >
-            <p className=" m-auto">{item.name}</p>
+            <div>
+              <p className=" m-auto" style={{ color: `${itemColor(item)}` }}>
+                {item.name}
+              </p>
+              <p className="text-[#FFFC01]">{item.ilevel}</p>
+            </div>
             <Image
               className="m-auto rounded"
               width={80}
@@ -49,7 +54,8 @@ export const ProductGrid = () => {
             />
             <p className=" m-auto">{item.type}</p>
             <div className="flex flex-row flex-nowrap items-center m-auto w-[100%] h-[100%] justify-evenly border-solid border-white border-2">
-              <div className="flex flex-row flex-nowrap w-[50px] max-h-[20px] align-middle justify-evenly">
+              <p>Cost: </p>
+              <div className="flex flex-row flex-nowrap w-[50px] items-center max-h-[20px] align-middle justify-evenly">
                 <p>{item.priceG}</p>
                 <Image
                   className="m-auto"
@@ -59,7 +65,7 @@ export const ProductGrid = () => {
                   alt="Gold"
                 />
               </div>
-              <div className="flex flex-row flex-nowrap w-[50px] max-h-[20px] align-middle justify-evenly">
+              <div className="flex flex-row flex-nowrap w-[50px] max-h-[20px] items-center align-middle justify-evenly">
                 <p>{item.priceS}</p>
                 <Image
                   height={10}
@@ -68,7 +74,7 @@ export const ProductGrid = () => {
                   alt="Silver"
                 />
               </div>
-              <div className="flex flex-row flex-nowrap w-[50px] max-h-[20px] align-middle justify-evenly">
+              <div className="flex flex-row flex-nowrap w-[50px] max-h-[20px] align-middle items-center justify-evenly">
                 <p>{item.priceC}</p>
                 <Image
                   height={10}

@@ -4,8 +4,6 @@ import itemData from "./../../data.JSON";
 const CartPage = () => {
   const itemDB = itemData.items;
 
-  const item = itemDB.find((item) => item.id == params.productId);
-
   const itemColor = (item) => {
     switch (item.quality) {
       case 0:

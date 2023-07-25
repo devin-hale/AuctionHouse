@@ -4,30 +4,19 @@
             "id":0,
             "name": "Sulfuras, Hand of Ragnaros",
             "img" : "/assets/itemIMG/sulfuras.jpg",
+            "ilevel": "Item Level 80",
             "level" : "Requires level 60.",
             "quality": 4,
-            "type": "Weapon",
+            "itemtype": "weapon",
+            "type": "Two-Handed Mace",
             "stats1": "+12 Strength",
             "stats2": "+12 Stamina",
+            "stats3": "+30 Fire Resistance",
             "description": "Chance on hit: Hurls a fiery ball that causes 273 to 333 Fire damage and an additional 75 damage over 10 sec.",
+            "description2": "Equip: Deals 5 Fire damage to anyone who strikes you with a melee attack.",
             "priceG": 33,
             "priceS": 26,
             "priceC": 23
-            
-        },
-        {
-            "id":1,
-            "name": "",
-            "img" : "",
-            "level" : "Requires level ",
-            "quality": 0,
-            "type": "",
-            "stats1": "",
-            "stats2": "",
-            "description": "",
-            "priceG": 1,
-            "priceS": 1,
-            "priceC": 2
             
         }
     ]
