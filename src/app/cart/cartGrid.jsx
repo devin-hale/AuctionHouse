@@ -36,7 +36,7 @@ const CartGrid = () => {
     const totalG = Math.floor(totalCopper / 10000);
     const totalS = Math.floor((totalCopper - totalG * 10000) / 100);
     const totalC = totalCopper - totalG * 10000 - totalS * 100;
-    return { totalG: totalG, totalS: totalS, totalC, totalC };
+    return { totalG: totalG, totalS: totalS, totalC: totalC };
   };
 
   const MapCart = () =>

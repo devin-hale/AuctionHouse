@@ -1,6 +1,7 @@
 import NavBar from "../components/navBar";
 import itemData from "./../../data.JSON";
 import CartGrid from "./cartGrid";
+import { CartCost } from "./costComponent";
 
 const CartPage = () => {
   const itemDB = itemData.items;
@@ -9,6 +10,7 @@ const CartPage = () => {
     <>
       <p>This is the cart page.</p>
       <CartGrid />
+      <CartCost />
       <div className="flex flex-row justify-between m-auto w-[85%] sm:w-[60%] mt-5 items-end">
         <button type="button" className="bg-white text-black">
           Continue Shopping
