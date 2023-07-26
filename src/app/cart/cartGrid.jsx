@@ -31,13 +31,21 @@ const CartGrid = () => {
     }
   };
 
+  const individualCostMultiplier = (itemQuantity, priceG, priceS, priceC) => {
+    const totalCopper = (priceG * 10000 + priceS * 100 + priceC) * itemQuantity;
+    const totalG = Math.floor(totalCopper / 10000);
+    const totalS = Math.floor((totalCopper - totalG * 10000) / 100);
+    const totalC = totalCopper - totalG * 10000 - totalS * 100;
+    return { totalG: totalG, totalS: totalS, totalC, totalC };
+  };
+
   const MapCart = () =>
     cart.map((item) => {
       if (item.amount > 0)
         return (
           <div
             key={item.item.id}
-            className="flex flex-row justify-evenly bg-slate-600 p-2 items-center w-[60%] m-auto relative"
+            className="flex flex-row justify-evenly bg-slate-600 p-2 items-center w-[100%] m-auto relative"
           >
             {deleteConfirm && (
               <RemoveModal
@@ -46,7 +54,7 @@ const CartGrid = () => {
                 item={item}
               />
             )}
-            <div className="w-[25%] flex flex-row items-center">
+            <div className="w-[25%] flex flex-row items-center justify-evenly">
               <div
                 onClick={() => setDeleteConfirm(!deleteConfirm)}
                 className="w-[20px] h-[20px] text-red-500 border-solid border-red-500 border-2 rounded text-center transition-all hover:transition-all hover:bg-red-300 cursor-pointer"
@@ -54,7 +62,7 @@ const CartGrid = () => {
                 <p className="mt-[-5px]">x</p>
               </div>
               <Image
-                className="rounded m-auto"
+                className="rounded m-auto w-[50px]"
                 width={50}
                 height={50}
                 src={item.item.img}
@@ -64,7 +72,7 @@ const CartGrid = () => {
             </div>
             <div className="w-[50%]">
               <p
-                className="text-center"
+                className="text-center text-[12px] w-[10%] sm:text-[15px] sm:w-auto m-4"
                 style={{ color: `${itemColor(item.item)}` }}
               >
                 {item.item.name}
@@ -94,13 +102,70 @@ const CartGrid = () => {
                 <p className="mt-[-5px]">+</p>
               </div>
             </div>
+            <div className="flex flex-row flex-wrap sm:flex-nowrap items-center m-2 justify-evenly">
+              <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
+                <p>
+                  {
+                    individualCostMultiplier(
+                      item.amount,
+                      item.item.priceG,
+                      item.item.priceS,
+                      item.item.priceC
+                    ).totalG
+                  }
+                </p>
+                <Image
+                  className="m-auto"
+                  height={20}
+                  width={20}
+                  src="/assets/goldIMG/Gold.webp"
+                  alt="Gold"
+                />
+              </div>
+              <div className="flex flex-row flex-nowrap w-[50px] max-h-[20px] items-center align-middle justify-evenly">
+                <p>
+                  {
+                    individualCostMultiplier(
+                      item.amount,
+                      item.item.priceG,
+                      item.item.priceS,
+                      item.item.priceC
+                    ).totalS
+                  }
+                </p>
+                <Image
+                  height={10}
+                  width={20}
+                  src="/assets/goldIMG/Silver.webp"
+                  alt="Silver"
+                />
+              </div>
+              <div className="flex flex-row flex-nowrap w-[50px] max-h-[20px] align-middle items-center justify-evenly">
+                <p>
+                  {
+                    individualCostMultiplier(
+                      item.amount,
+                      item.item.priceG,
+                      item.item.priceS,
+                      item.item.priceC
+                    ).totalC
+                  }
+                </p>
+                <Image
+                  height={10}
+                  width={20}
+                  src="/assets/goldIMG/Copper.webp"
+                  alt="Copper"
+                />
+              </div>
+            </div>
           </div>
         );
     });
 
   return (
-    <div className="text-white">
-      <div className="flex flex-row justify-evenly bg-slate-800 p-2 items-center w-[60%] m-auto">
+    <div className="text-white w-[85%] sm:w-[60%] m-auto">
+      <div className="flex flex-row justify-evenly bg-slate-800 p-2 items-center w-[100%] m-auto">
         <p>Icon</p>
         <p>Name</p>
         <p>Quantity</p>
