@@ -9,12 +9,12 @@ const CartPage = () => {
     <>
       <p>This is the cart page.</p>
       <CartGrid />
-      <div className="flex flex-col m-auto w-[40%] mt-5 items-end">
-        <button type="button" className="bg-white text-black">
-          Check Out
-        </button>
+      <div className="flex flex-row justify-between m-auto w-[85%] sm:w-[60%] mt-5 items-end">
         <button type="button" className="bg-white text-black">
           Continue Shopping
+        </button>
+        <button type="button" className="bg-white text-black">
+          Check Out
         </button>
       </div>
     </>

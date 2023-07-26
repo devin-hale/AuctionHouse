@@ -55,12 +55,6 @@ const CartGrid = () => {
               />
             )}
             <div className="w-[25%] flex flex-row items-center justify-evenly">
-              <div
-                onClick={() => setDeleteConfirm(!deleteConfirm)}
-                className="w-[20px] h-[20px] text-red-500 border-solid border-red-500 border-2 rounded text-center transition-all hover:transition-all hover:bg-red-300 cursor-pointer"
-              >
-                <p className="mt-[-5px]">x</p>
-              </div>
               <Image
                 className="rounded m-auto w-[50px]"
                 width={50}
@@ -158,6 +152,12 @@ const CartGrid = () => {
                   alt="Copper"
                 />
               </div>
+            </div>
+            <div
+              onClick={() => setDeleteConfirm(!deleteConfirm)}
+              className="w-[10%] sm:w-[5%] h-[20px] text-red-500 border-solid border-red-500 border-2 rounded text-center transition-all hover:transition-all hover:bg-red-300 cursor-pointer"
+            >
+              <p className="mt-[-5px]">x</p>
             </div>
           </div>
         );
