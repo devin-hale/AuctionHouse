@@ -48,15 +48,17 @@ const ProductDetail = ({ params }) => {
           </div>
         </div>
 
-        <div className="flex flex-col m-auto sm:flex-row">
-          <Image
-            className="m-auto rounded border-2 border-solid"
-            width={100}
-            height={100}
-            src={item.img}
-            style={{ border: `2px solid ${itemColor(item)}` }}
-            alt=""
-          />
+        <div className="flex flex-col sm:flex-row mt-[10px] mb-[10px] items-center">
+          <div className="w-[100%] sm:w-[40%]">
+            <Image
+              className=" m-auto rounded border-2 border-solid sm:w-[125px]"
+              width={100}
+              height={100}
+              src={item.img}
+              style={{ border: `2px solid ${itemColor(item)}` }}
+              alt=""
+            />
+          </div>
           <div className="w-[100%] sm:w-[60%]">
             <p className=" m-auto">{item.type}</p>
             <p>{item.stats1}</p>
@@ -68,7 +70,7 @@ const ProductDetail = ({ params }) => {
           </div>
         </div>
 
-        <div className="flex flex-row flex-wrap m-auto items-center w-[100%] text-[25px] justify-evenly ">
+        <div className="flex flex-col sm:flex-row m-auto items-center w-[100%] text-[20px] sm:text-[25px] justify-evenly h-[50px]  ">
           <div className="flex flex-row flex-nowrap items-center justify-evenly border-solid border-white border-2">
             <p className="mr-[10px]">Cost:</p>
             <div className="flex flex-row flex-nowrap w-[50px] max-h-[20px] items-center align-middle justify-evenly">
