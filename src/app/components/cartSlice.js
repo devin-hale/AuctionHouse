@@ -34,7 +34,7 @@ export const cartSlice = createSlice({
       } else state.value[itemIndex].amount -= 1;
     },
     setProductAmount: (state, action) => {
-      if (action.payload.value >= 1 && action.payload.value <= 10) {
+      if (action.payload.value >= 1 && action.payload.value <= 25) {
         const itemIndex = state.value.findIndex(
           (obj) => obj.item.id === action.payload.item.item.id
         );

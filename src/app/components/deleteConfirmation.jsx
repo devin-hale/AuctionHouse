@@ -23,8 +23,8 @@ export const RemoveModal = ({ item, deleteConfirm, setDeleteConfirm }) => {
   };
 
   return (
-    <div className="bg-[rgba(0,0,0,.75)] absolute w-[100%] h-[100%] flex items-center z-10">
-      <div className="bg-white rounded text-black m-auto w-fit h-[100%] p-1 flex flex-col items-center">
+    <div className="bg-[rgba(0,0,0,.75)] fixed w-[100%] h-[100%] z-10">
+      <div className="bg-white rounded text-black w-fit h-fit p-1 flex flex-col items-center fixed inset-x-0 inset-y-0 m-auto">
         <p>Remove {item.item.name} from Cart?</p>
         <Image
           className="rounded m-auto w-[100px]"

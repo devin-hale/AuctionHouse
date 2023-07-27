@@ -42,7 +42,6 @@ const CartGrid = () => {
   };
 
   const handleInputChange = (e, item) => {
-    console.log(e.target.value);
     dispatch(setProductAmount({ item: item, value: e.target.value }));
   };
 
@@ -95,8 +94,9 @@ const CartGrid = () => {
                 item={item.item}
                 value={item.amount}
                 min="1"
-                max="10"
+                max="25"
                 onChange={(e) => handleInputChange(e, item)}
+                onFocus={(e) => e.target.select()}
               ></input>
               <div
                 className="w-[20px] h-[20px] border-solid border-slate-300 border-2 rounded text-center cursor-pointer transition-all hover:bg-white hover:text-black hover:transition-all"
@@ -178,12 +178,7 @@ const CartGrid = () => {
     });
 
   return (
-    <div className="text-white w-[85%] sm:w-[60%] m-auto relative">
-      <div className="flex flex-row justify-evenly bg-slate-800 p-2 items-center w-[100%] m-auto">
-        <p>Icon</p>
-        <p>Name</p>
-        <p>Quantity</p>
-      </div>
+    <div className="text-white w-[85%] sm:w-[60%] m-auto">
       {deleteConfirm && (
         <RemoveModal
           deleteConfirm={deleteConfirm}
@@ -191,6 +186,11 @@ const CartGrid = () => {
           item={deleteItem}
         />
       )}
+      <div className="flex flex-row justify-evenly bg-slate-800 p-2 items-center w-[100%] m-auto">
+        <p>Icon</p>
+        <p>Name</p>
+        <p>Quantity</p>
+      </div>
       <MapCart />
     </div>
   );
