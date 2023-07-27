@@ -4,6 +4,7 @@ import {
   removeProduct,
   incrementProduct,
   decrementProduct,
+  setProductAmount,
 } from "../components/cartSlice";
 import cartSlice from "../components/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,7 +40,10 @@ const CartGrid = () => {
     return { totalG: totalG, totalS: totalS, totalC: totalC };
   };
 
-  console.log(cart);
+  const handleInputChange = (e, item) => {
+    console.log(e.target.value);
+    dispatch(setProductAmount({ item: item, value: e.target.value }));
+  };
 
   const MapCart = () =>
     cart.map((item) => {
@@ -91,9 +95,15 @@ const CartGrid = () => {
                 </div>
               )}
 
-              <p className="text-black w-[25px] rounded border-slate-400 border-solid border-2 bg-white text-center">
-                {item.amount}
-              </p>
+              <input
+                className="text-black w-[25px] rounded border-slate-400 border-solid border-2 bg-white text-center"
+                type="number"
+                item={item.item}
+                value={item.amount}
+                min="1"
+                max="10"
+                onChange={(e) => handleInputChange(e, item)}
+              ></input>
               <div
                 className="w-[20px] h-[20px] border-solid border-slate-300 border-2 rounded text-center cursor-pointer transition-all hover:bg-white hover:text-black hover:transition-all"
                 onClick={() => dispatch(incrementProduct(item.item))}

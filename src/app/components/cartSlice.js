@@ -33,10 +33,23 @@ export const cartSlice = createSlice({
       if (state.value[itemIndex].amount == 0) {
       } else state.value[itemIndex].amount -= 1;
     },
+    setProductAmount: (state, action) => {
+      if (action.payload.value >= 1 && action.payload.value <= 10) {
+        const itemIndex = state.value.findIndex(
+          (obj) => obj.item.id === action.payload.item.item.id
+        );
+        state.value[itemIndex].amount = action.payload.value;
+      }
+    },
   },
 });
 
-export const { addProduct, removeProduct, incrementProduct, decrementProduct } =
-  cartSlice.actions;
+export const {
+  addProduct,
+  removeProduct,
+  incrementProduct,
+  decrementProduct,
+  setProductAmount,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
