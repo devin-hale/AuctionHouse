@@ -16,6 +16,7 @@ const CartGrid = () => {
   const cart = useSelector((state) => state.cart.value);
   const dispatch = useDispatch();
   const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [deleteItem, setDeleteItem] = useState(null);
 
   const itemColor = (item) => {
     switch (item.quality) {
@@ -53,13 +54,6 @@ const CartGrid = () => {
             key={item.item.id}
             className="flex flex-row justify-evenly bg-slate-600 p-2 items-center w-[100%] m-auto relative"
           >
-            {deleteConfirm && (
-              <RemoveModal
-                deleteConfirm={deleteConfirm}
-                setDeleteConfirm={setDeleteConfirm}
-                item={item}
-              />
-            )}
             {/* Item Image */}
             <div className="w-[25%] flex flex-row items-center justify-evenly">
               <Image
@@ -72,7 +66,7 @@ const CartGrid = () => {
               />
             </div>
             {/* Item Name */}
-            <div className="w-[150px]">
+            <div className="min-w-[75px] sm:min-w-[150px]">
               <p
                 className="text-center text-[12px] w-[10%] sm:text-[15px] sm:w-auto m-4"
                 style={{ color: `${itemColor(item.item)}` }}
@@ -81,7 +75,7 @@ const CartGrid = () => {
               </p>
             </div>
             {/* Quantity */}
-            <div className="w-[200px] flex flex-row justify-evenly items-center">
+            <div className="min-w-[75px] sm:min-w-[150px] flex flex-row justify-evenly items-center">
               {item.amount > 1 ? (
                 <div
                   className="w-[20px] h-[20px] border-solid border-slate-300 border-2 rounded text-center cursor-pointer transition-all hover:bg-white hover:text-black hover:transition-all"
@@ -112,7 +106,7 @@ const CartGrid = () => {
               </div>
             </div>
             {/* Gold Cost */}
-            <div className="flex flex-row flex-wrap sm:flex-nowrap items-center m-2 justify-evenly w-[50px] sm:w-[200px]">
+            <div className="flex flex-row flex-wrap sm:flex-nowrap items-center m-2 justify-evenly min-w-[25px] sm:min-w-[125px]">
               <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
                 <p>
                   {
@@ -171,7 +165,10 @@ const CartGrid = () => {
             </div>
             {/* Delete Button */}
             <div
-              onClick={() => setDeleteConfirm(!deleteConfirm)}
+              onClick={() => {
+                setDeleteConfirm(!deleteConfirm);
+                setDeleteItem(item);
+              }}
               className="w-[25px] h-[20px] text-red-500 border-solid border-red-500 border-2 rounded text-center transition-all hover:transition-all hover:bg-red-300 cursor-pointer"
             >
               <p className="mt-[-5px]">x</p>
@@ -181,12 +178,19 @@ const CartGrid = () => {
     });
 
   return (
-    <div className="text-white w-[85%] sm:w-[60%] m-auto">
+    <div className="text-white w-[85%] sm:w-[60%] m-auto relative">
       <div className="flex flex-row justify-evenly bg-slate-800 p-2 items-center w-[100%] m-auto">
         <p>Icon</p>
         <p>Name</p>
         <p>Quantity</p>
       </div>
+      {deleteConfirm && (
+        <RemoveModal
+          deleteConfirm={deleteConfirm}
+          setDeleteConfirm={setDeleteConfirm}
+          item={deleteItem}
+        />
+      )}
       <MapCart />
     </div>
   );
