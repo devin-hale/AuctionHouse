@@ -9,7 +9,7 @@ const ShoppingPage = () => {
   return (
     <>
       <p>This is the shop page.</p>
-      <ProductGrid />
+      <ProductGrid typeFilter={typeFilter} />
       <Filters typeFilter={typeFilter} setTypeFilter={setTypeFilter} />
     </>
   );

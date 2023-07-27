@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addProduct } from "./cartSlice";
 import { useRouter } from "next/navigation";
 
-export const ProductGrid = () => {
+export const ProductGrid = ({ typeFilter }) => {
   const cart = useSelector((state) => state.cart.value);
   const itemDB = itemData;
   const dispatch = useDispatch();
@@ -30,8 +30,13 @@ export const ProductGrid = () => {
     }
   };
 
+  const filterItems = () => {
+    if (typeFilter === "All") return itemDB.items;
+    else return itemDB.items.filter((item) => item.itemtype === typeFilter);
+  };
+
   const ItemDiv = () =>
-    itemDB.items.map((item) => {
+    filterItems().map((item) => {
       return (
         <div key={item.id}>
           <div
