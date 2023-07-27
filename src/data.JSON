@@ -18,6 +18,39 @@
             "priceS": 26,
             "priceC": 23
             
+        },
+        {
+            "id":1,
+            "name": "Tusks of Mannoroth",
+            "img" : "/assets/itemIMG/tusks.jpg",
+            "ilevel": "Item Level 126",
+            "level" : "Requires level 35.",
+            "quality": 3,
+            "itemtype": "armor",
+            "type": "Shoulder",
+            "stats1": "+9 Strength",
+            "stats2": "+27 Stamina",
+            "stats3": "+12 Critical Strike",
+            "priceG": 5,
+            "priceS": 16,
+            "priceC": 87
+            
+        },
+        {
+            "id":2,
+            "name": "Neltharion's Call to Chaos",
+            "img" : "/assets/itemIMG/calltochaos.jpg",
+            "ilevel": "Item Level 431",
+            "level" : "Requires level 70.",
+            "quality": 3,
+            "itemtype": "armor",
+            "type": "Trinket",
+            "stats1": "+580 Critical Strike",
+            "description": "Equip: Your area effect spells and abilities have a chance to grant you 2109 <Primary Stat> and increase damage you receive by 5% for 18 sec.",
+            "priceG": 79,
+            "priceS": 24,
+            "priceC": 56
+            
         }
     ]
 }

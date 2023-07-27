@@ -31,7 +31,7 @@ export const CartCost = () => {
 
   return (
     <div>
-      <div className="flex flex-row items-center text-[20px] justify-between w-[85%] sm:w-[35%] m-auto">
+      <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[60%] m-auto">
         <p>Total: </p>
         <div className="flex flex-row flex-wrap sm:flex-nowrap items-center m-2 justify-evenly text-white">
           <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">

@@ -39,6 +39,8 @@ const CartGrid = () => {
     return { totalG: totalG, totalS: totalS, totalC: totalC };
   };
 
+  console.log(cart);
+
   const MapCart = () =>
     cart.map((item) => {
       if (item.amount > 0)
@@ -54,6 +56,7 @@ const CartGrid = () => {
                 item={item}
               />
             )}
+            {/* Item Image */}
             <div className="w-[25%] flex flex-row items-center justify-evenly">
               <Image
                 className="rounded m-auto w-[50px]"
@@ -64,7 +67,8 @@ const CartGrid = () => {
                 alt=""
               />
             </div>
-            <div className="w-[50%]">
+            {/* Item Name */}
+            <div className="w-[150px]">
               <p
                 className="text-center text-[12px] w-[10%] sm:text-[15px] sm:w-auto m-4"
                 style={{ color: `${itemColor(item.item)}` }}
@@ -72,7 +76,8 @@ const CartGrid = () => {
                 {item.item.name}
               </p>
             </div>
-            <div className="w-[25%] flex flex-row justify-evenly items-center">
+            {/* Quantity */}
+            <div className="w-[200px] flex flex-row justify-evenly items-center">
               {item.amount > 1 ? (
                 <div
                   className="w-[20px] h-[20px] border-solid border-slate-300 border-2 rounded text-center cursor-pointer transition-all hover:bg-white hover:text-black hover:transition-all"
@@ -96,7 +101,8 @@ const CartGrid = () => {
                 <p className="mt-[-5px]">+</p>
               </div>
             </div>
-            <div className="flex flex-row flex-wrap sm:flex-nowrap items-center m-2 justify-evenly">
+            {/* Gold Cost */}
+            <div className="flex flex-row flex-wrap sm:flex-nowrap items-center m-2 justify-evenly w-[50px] sm:w-[200px]">
               <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
                 <p>
                   {
@@ -153,9 +159,10 @@ const CartGrid = () => {
                 />
               </div>
             </div>
+            {/* Delete Button */}
             <div
               onClick={() => setDeleteConfirm(!deleteConfirm)}
-              className="w-[10%] sm:w-[5%] h-[20px] text-red-500 border-solid border-red-500 border-2 rounded text-center transition-all hover:transition-all hover:bg-red-300 cursor-pointer"
+              className="w-[25px] h-[20px] text-red-500 border-solid border-red-500 border-2 rounded text-center transition-all hover:transition-all hover:bg-red-300 cursor-pointer"
             >
               <p className="mt-[-5px]">x</p>
             </div>
