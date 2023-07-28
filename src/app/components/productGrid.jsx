@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addProduct } from "./cartSlice";
 import { useRouter } from "next/navigation";
 
-export const ProductGrid = ({ typeFilter }) => {
+export const ProductGrid = ({ typeFilter, uniqueTypeFilter }) => {
   const cart = useSelector((state) => state.cart.value);
   const itemDB = itemData;
   const dispatch = useDispatch();
@@ -32,7 +32,14 @@ export const ProductGrid = ({ typeFilter }) => {
 
   const filterItems = () => {
     if (typeFilter === "All") return itemDB.items;
-    else return itemDB.items.filter((item) => item.itemtype === typeFilter);
+    else {
+      const filteredItems = itemDB.items.filter(
+        (item) => item.itemtype === typeFilter
+      );
+      if (uniqueTypeFilter === "All") return filteredItems;
+      else
+        return filteredItems.filter((item) => item.type === uniqueTypeFilter);
+    }
   };
 
   const ItemDiv = () =>
@@ -106,7 +113,7 @@ export const ProductGrid = ({ typeFilter }) => {
     });
 
   return (
-    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  m-auto">
+    <div className="sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid grid-cols-1 gap-5 m-auto">
       <ItemDiv />
     </div>
   );
