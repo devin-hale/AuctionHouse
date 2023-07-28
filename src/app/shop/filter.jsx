@@ -56,10 +56,11 @@ export const Filters = ({
   return (
     <div>
       <div>
-        <p>Item Type:</p>
+        <h1>Item Type:</h1>
         <div key="All">
           <input
             type="radio"
+            defaultChecked="true"
             id="All"
             name="itemTypeFilter"
             checked={typeFilter === "All"}
@@ -73,10 +74,11 @@ export const Filters = ({
         <ItemTypeMap />
         {typeFilter !== "All" && (
           <div key="All">
-            <p>{typeFilter} Type:</p>
+            <h2>{typeFilter} Type:</h2>
             <input
               type="radio"
               checked={uniqueTypeFilter === "All"}
+              defaultChecked="true"
               onClick={() => setUniqueTypeFilter("All")}
               key="All"
               name="uniqueTypeFilter"

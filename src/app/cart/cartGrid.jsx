@@ -96,7 +96,7 @@ const CartGrid = () => {
                 min="1"
                 max="25"
                 onChange={(e) => handleInputChange(e, item)}
-                onFocus={(e) => e.target.select()}
+                onClick={(e) => e.target.select()}
               ></input>
               <div
                 className="w-[20px] h-[20px] border-solid border-slate-300 border-2 rounded text-center cursor-pointer transition-all hover:bg-white hover:text-black hover:transition-all"
