@@ -117,18 +117,76 @@ export const MarketingSC = () => {
     }
   };
 
+  const handleTextCurrent = () => {
+    switch (changing) {
+      case null:
+        return {};
+      case "next":
+        return { animation: "textFadeOut .25s ease forwards" };
+      case "prev":
+        return { animation: "textFadeOut .25s ease forwards" };
+    }
+  };
+
+  const handleTextNext = () => {
+    switch (changing) {
+      case null:
+        return {};
+      case "next":
+        return { animation: "textFadeIn .25s ease .25s forwards" };
+      case "prev":
+        return {};
+    }
+  };
+
+  const handleTextPrev = () => {
+    switch (changing) {
+      case null:
+        return {};
+      case "next":
+        return {};
+      case "prev":
+        return { animation: "textFadeIn .25s ease .25s forwards" };
+    }
+  };
+
   return (
     <div>
       <div
         className="relative m-auto overflow-hidden text-center"
         onClick={() => handleNext()}
       >
-        <div className="drop-shadow-lg absolute inset-x-0 inset-y-0 z-30">
+        <div
+          className="drop-shadow-lg absolute inset-x-0 inset-y-0 z-30"
+          style={handleTextCurrent()}
+        >
           <p className="text-[25px] sm:text-[45px]">{currentImg.text}</p>
-          <p>
+          <p className="sm:text-[25px]">
             <em>{currentImg.subtext}</em>
           </p>
         </div>
+        {prevImg && (
+          <div
+            className="drop-shadow-lg absolute inset-x-0 inset-y-0 z-30 opacity-0"
+            style={handleTextPrev()}
+          >
+            <p className="text-[25px] sm:text-[45px]">{prevImg.text}</p>
+            <p className="sm:text-[25px]">
+              <em>{prevImg.subtext}</em>
+            </p>
+          </div>
+        )}
+        {nextImg && (
+          <div
+            className="drop-shadow-lg absolute inset-x-0 inset-y-0 z-30 opacity-0"
+            style={handleTextNext()}
+          >
+            <p className="text-[25px] sm:text-[45px]">{nextImg.text}</p>
+            <p className="sm:text-[25px]">
+              <em>{nextImg.subtext}</em>
+            </p>
+          </div>
+        )}
         <img
           className="z-20 m-auto"
           style={handleStyleCurrent()}
