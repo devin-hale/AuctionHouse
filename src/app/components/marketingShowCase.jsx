@@ -153,9 +153,12 @@ export const MarketingSC = () => {
   return (
     <div>
       <div
-        className="relative m-auto overflow-hidden text-center"
+        className=" relative m-auto overflow-hidden text-center"
         onClick={() => handleNext()}
       >
+        <div className="absolute border-solid border-red-400 border-[2px] z-50">
+          <div>aaaa</div>
+        </div>
         <div
           className="drop-shadow-lg absolute inset-x-0 inset-y-0 z-30"
           style={handleTextCurrent()}
