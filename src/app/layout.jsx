@@ -1,7 +1,11 @@
+"use client";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import ReduxProvider from "./ReduxProvider";
 import NavBar from "./components/navBar";
+import { MobileNavBar } from "./components/mobileNavBar";
+import { useMediaQuery } from "@uidotdev/usehooks";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,11 +15,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const isMobile = useMediaQuery("only screen and (max-width : 640px)");
+  const isDesktop = useMediaQuery("only screen and (min-width : 641px)");
   return (
     <html lang="en">
       <body className={inter.className}>
         <ReduxProvider>
-          <NavBar />
+          {isMobile && <MobileNavBar />}
+          {isDesktop && <NavBar />}
           {children}
         </ReduxProvider>
       </body>
