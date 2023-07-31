@@ -10,7 +10,7 @@
 
 @keyframes lastIn {
     0% {}
-    100% { opacity: 0; transform: translateX(116.5%); scale: 90%;}
+    100% { opacity: .5; transform: translateX(116.5%); scale: 90%;}
 }
 
 @keyframes prevIn {
