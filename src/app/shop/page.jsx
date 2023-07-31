@@ -8,19 +8,25 @@ const ShoppingPage = () => {
   const [typeFilter, setTypeFilter] = useState("All");
   const [uniqueTypeFilter, setUniqueTypeFilter] = useState("All");
   return (
-    <>
-      <p>This is the shop page.</p>
-      <ProductGrid
-        typeFilter={typeFilter}
-        uniqueTypeFilter={uniqueTypeFilter}
-      />
-      <Filters
-        typeFilter={typeFilter}
-        setTypeFilter={setTypeFilter}
-        uniqueTypeFilter={uniqueTypeFilter}
-        setUniqueTypeFilter={setUniqueTypeFilter}
-      />
-    </>
+    <div>
+      <br></br>
+      <div className="flex flex-row w-[100%]">
+        <div className="w-[20%]">
+          <Filters
+            typeFilter={typeFilter}
+            setTypeFilter={setTypeFilter}
+            uniqueTypeFilter={uniqueTypeFilter}
+            setUniqueTypeFilter={setUniqueTypeFilter}
+          />
+        </div>
+        <div className="w-[80%]">
+          <ProductGrid
+            typeFilter={typeFilter}
+            uniqueTypeFilter={uniqueTypeFilter}
+          />
+        </div>
+      </div>
+    </div>
   );
 };
 

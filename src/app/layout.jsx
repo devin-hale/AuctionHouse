@@ -6,6 +6,7 @@ import NavBar from "./components/navBar";
 import { MobileNavBar } from "./components/mobileNavBar";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,14 +16,19 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const isMobile = useMediaQuery("only screen and (max-width : 640px)");
-  const isDesktop = useMediaQuery("only screen and (min-width : 641px)");
+  const mobileCheck = useMediaQuery("only screen and (max-width : 640px)");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(mobileCheck);
+  }, [mobileCheck]);
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <ReduxProvider>
           {isMobile && <MobileNavBar />}
-          {isDesktop && <NavBar />}
+          {!isMobile && <NavBar />}
           {children}
         </ReduxProvider>
       </body>

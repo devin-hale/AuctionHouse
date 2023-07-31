@@ -178,7 +178,7 @@ const CartGrid = () => {
     });
 
   return (
-    <div className="text-white w-[85%] sm:w-[60%] m-auto">
+    <div className="text-white w-[85%] sm:w-[85%] m-auto">
       {deleteConfirm && (
         <RemoveModal
           deleteConfirm={deleteConfirm}
@@ -186,11 +186,6 @@ const CartGrid = () => {
           item={deleteItem}
         />
       )}
-      <div className="flex flex-row justify-evenly bg-slate-800 p-2 items-center w-[100%] m-auto">
-        <p>Icon</p>
-        <p>Name</p>
-        <p>Quantity</p>
-      </div>
       <MapCart />
     </div>
   );

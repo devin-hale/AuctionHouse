@@ -24,8 +24,9 @@ export const RemoveModal = ({ item, deleteConfirm, setDeleteConfirm }) => {
 
   return (
     <div className="bg-[rgba(0,0,0,.75)] fixed w-[100%] h-[100%] z-10">
-      <div className="w-fit h-fit fixed inset-x-0 inset-y-0 flex flex-col items-center p-1 m-auto text-black bg-white rounded">
-        <p>Remove {item.item.name} from Cart?</p>
+      <div className="w-fit h-fit fixed inset-x-0 inset-y-0 flex flex-col items-center p-1 m-auto text-center text-black bg-white rounded">
+        <p>Remove [{item.item.name}] from Cart?</p>
+        <br></br>
         <Image
           className="rounded m-auto w-[100px]"
           width={100}
@@ -34,6 +35,7 @@ export const RemoveModal = ({ item, deleteConfirm, setDeleteConfirm }) => {
           style={{ border: `2px solid ${itemColor(item.item)}` }}
           alt=""
         />
+        <br></br>
         <div className="flex-nowrap justify-evenly flex flex-row">
           <button
             type="button"

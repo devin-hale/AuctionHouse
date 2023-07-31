@@ -100,6 +100,7 @@ export const ProductGrid = ({ typeFilter, uniqueTypeFilter }) => {
               <button
                 type="button"
                 onClick={(e) => {
+                  e.preventDefault;
                   e.stopPropagation();
                   dispatch(addProduct(item));
                 }}
@@ -113,7 +114,7 @@ export const ProductGrid = ({ typeFilter, uniqueTypeFilter }) => {
     });
 
   return (
-    <div className="sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid grid-cols-1 gap-5 m-auto">
+    <div className="sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid grid-cols-1 gap-5 p-2 m-auto">
       <ItemDiv />
     </div>
   );

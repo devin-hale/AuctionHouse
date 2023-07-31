@@ -1,0 +1,12 @@
+[
+    {
+        "text" : "The Garrosh Collection",
+        "subtext": "Order Now",
+        "img" : "./assets/collections/garroshM.png"
+    },
+    {
+        "text" : "New from Abberus",
+        "subtext": "Order Now",
+        "img" : "./assets/collections/abberus.png"
+    }
+]
