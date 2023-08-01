@@ -51,6 +51,14 @@ export const MarketingSC = () => {
     else setLastImg(marketingData[currentIndex + 2]);
   };
 
+  {
+    /*useLayoutEffect(() => {
+    setTimeout(() => {
+      handleNext();
+    }, 10000);
+  }, [nextImg]);*/
+  }
+
   const handleNext = () => {
     setChanging("next");
     setTimeout(() => {
