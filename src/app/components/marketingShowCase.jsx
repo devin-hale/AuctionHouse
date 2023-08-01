@@ -156,9 +156,6 @@ export const MarketingSC = () => {
         className=" relative m-auto overflow-hidden text-center"
         onClick={() => handleNext()}
       >
-        <div className="absolute border-solid border-red-400 border-[2px] z-50">
-          <div>aaaa</div>
-        </div>
         <div
           className="drop-shadow-lg absolute inset-x-0 inset-y-0 z-30"
           style={handleTextCurrent()}
@@ -181,7 +178,7 @@ export const MarketingSC = () => {
         )}
         {nextImg && (
           <div
-            className="drop-shadow-lg absolute inset-x-0 inset-y-0 z-30 opacity-0"
+            className=" drop-shadow-lg absolute inset-x-0 inset-y-0 z-30 opacity-0"
             style={handleTextNext()}
           >
             <p className="text-[25px] sm:text-[45px]">{nextImg.text}</p>
@@ -190,12 +187,14 @@ export const MarketingSC = () => {
             </p>
           </div>
         )}
-        <img
-          className="z-20 m-auto"
-          style={handleStyleCurrent()}
-          src={currentImg.img}
-          alt=""
-        />
+        <div className=" relative">
+          <img
+            className="z-20 m-auto"
+            style={handleStyleCurrent()}
+            src={currentImg.img}
+            alt=""
+          />
+        </div>
         {prevImg && (
           <img
             className="absolute inset-x-0 inset-y-0 m-auto translate-x-[-105%] opacity-[.5] scale-[90%] z-10"
