@@ -3,8 +3,11 @@ import Link from "next/link";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const NavBar = () => {
+  const path = usePathname();
+
   const cart = useSelector((state) => state.cart.value);
 
   const cartAmount = cart.reduce(
@@ -19,7 +22,7 @@ const NavBar = () => {
     setIsMobile(mobileCheck);
   }, [mobileCheck]);
 
-  const pathName = window.location.pathname;
+  console.log(path);
 
   return (
     <>
@@ -27,15 +30,27 @@ const NavBar = () => {
         <div className=" w-[85%] flex flex-row justify-between font-frizquad hover:transition-all transition-all m-auto text-[20px] mt-0 mb-3">
           <div className="justify-evenly flex flex-row items-center">
             <Link
-              className=" hover:border-red-400 hover:transition-all p-5 transition-all border-b-2 border-transparent"
+              className={`hover:transition-all border-b-2 hover:border-red-400 p-5 transition-all ${
+                path === `/` ? `border-b-red-400` : null
+              }`}
               href="/"
             >
               Home
             </Link>
-            <Link className="hover:bg-red-300 p-5" href="/shop">
+            <Link
+              className={`hover:transition-all border-b-2 hover:border-red-400 p-5 transition-all ${
+                path === `/shop` ? `border-b-red-400` : null
+              }`}
+              href="/shop"
+            >
               Shop
             </Link>
-            <Link className="hover:bg-red-400 p-5" href="/">
+            <Link
+              className={`hover:transition-all border-b-2 hover:border-red-400 p-5 transition-all ${
+                path === `/about` ? `border-b-red-400` : null
+              }`}
+              href="/"
+            >
               About
             </Link>
           </div>

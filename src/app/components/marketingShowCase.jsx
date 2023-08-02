@@ -222,7 +222,7 @@ export const MarketingSC = () => {
             return (
               <div
                 className=" m-2 transition-all w-[75px] h-[2.5px] bg-white rounded-md shadow-md"
-                key={el}
+                key={el.id}
                 style={
                   currentImg === el
                     ? { background: `white` }

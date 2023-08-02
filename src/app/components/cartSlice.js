@@ -7,12 +7,16 @@ export const cartSlice = createSlice({
   },
   reducers: {
     addProduct: (state, action) => {
-      if (state.value.some((item) => item.item.id === action.payload.id)) {
+      if (state.value.some((item) => item.item.id === action.payload.item.id)) {
         const itemIndex = state.value.findIndex(
-          (obj) => obj.item.id === action.payload.id
+          (obj) => obj.item.id === action.payload.item.id
         );
-        state.value[itemIndex].amount += 1;
-      } else state.value.push({ item: action.payload, amount: 1 });
+        state.value[itemIndex].amount += action.payload.quantity;
+      } else
+        state.value.push({
+          item: action.payload.item,
+          amount: action.payload.quantity,
+        });
     },
     removeProduct: (state, action) => {
       const itemIndex = state.value.findIndex(

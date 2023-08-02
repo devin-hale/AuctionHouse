@@ -94,7 +94,7 @@ const CartGrid = () => {
                 item={item.item}
                 value={item.amount}
                 min="1"
-                max="25"
+                max="99"
                 onChange={(e) => handleInputChange(e, item)}
                 onClick={(e) => e.target.select()}
               ></input>

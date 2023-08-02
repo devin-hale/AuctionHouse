@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import ReduxProvider from "./ReduxProvider";
-import localFont from "@next/font/local";
+import localFont from "next/font/local";
 
 const frizQuadrata = localFont({
   src: "./fonts/friz-quadrata.otf",
@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${openSans.variable} ${frizQuadrata.variable} ${lifeCraft.variable} `}
     >
-      <body>
+      <body className="pt-0 mt-0">
         <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
