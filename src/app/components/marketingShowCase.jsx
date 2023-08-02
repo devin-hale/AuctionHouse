@@ -1,4 +1,6 @@
 "use client";
+import Icon from "@mdi/react";
+import { mdiChevronLeftBox, mdiChevronRightBox } from "@mdi/js";
 import marketingData from "./marketing.JSON";
 import { useState, useEffect, useLayoutEffect } from "react";
 import "./marketingSC.css";
@@ -64,7 +66,7 @@ export const MarketingSC = () => {
     setTimeout(() => {
       setCurrentImg(nextImg);
       setChanging(null);
-    }, 450);
+    }, 500);
   };
 
   const handlePrev = () => {
@@ -74,7 +76,7 @@ export const MarketingSC = () => {
       setCurrentImg(prevImg);
       setNextImg(currentImg);
       setChanging(null);
-    }, 450);
+    }, 500);
   };
 
   const handleStyleFirst = () => {
@@ -169,34 +171,40 @@ export const MarketingSC = () => {
 
   return (
     <div>
-      <div className=" relative m-auto overflow-hidden text-center">
+      <div className=" drop-shadow-lg relative m-auto overflow-x-hidden text-center select-none">
         <div
-          className="drop-shadow-lg absolute inset-x-0 inset-y-0 z-30"
+          className="font-lifeCraft absolute inset-x-0 inset-y-0 z-30 text-white"
           style={handleTextCurrent()}
         >
-          <p className="text-[25px] sm:text-[45px]">{currentImg.text}</p>
-          <p className="sm:text-[25px]">
+          <p className="text-[30px] sm:text-[60px] m-auto text-shadow-md">
+            {currentImg.text}
+          </p>
+          <p className="text-[20px] sm:text-[30px] text-shadow-md">
             <em>{currentImg.subtext}</em>
           </p>
         </div>
         {prevImg && (
           <div
-            className="drop-shadow-lg absolute inset-x-0 inset-y-0 z-30 opacity-0"
+            className=" font-lifeCraft absolute inset-x-0 inset-y-0 z-30 text-white opacity-0"
             style={handleTextPrev()}
           >
-            <p className="text-[25px] sm:text-[45px]">{prevImg.text}</p>
-            <p className="sm:text-[25px]">
+            <p className="text-[30px] sm:text-[60px] m-auto text-shadow-md">
+              {prevImg.text}
+            </p>
+            <p className="text-[20px] sm:text-[30px] text-shadow-md">
               <em>{prevImg.subtext}</em>
             </p>
           </div>
         )}
         {nextImg && (
           <div
-            className=" drop-shadow-lg absolute inset-x-0 inset-y-0 z-30 opacity-0"
+            className=" font-lifeCraft drop-shadow-lg absolute inset-x-0 inset-y-0 z-30 text-white opacity-0"
             style={handleTextNext()}
           >
-            <p className="text-[25px] sm:text-[45px]">{nextImg.text}</p>
-            <p className="sm:text-[25px]">
+            <p className="text-[30px] sm:text-[60px] m-auto text-shadow-md">
+              {nextImg.text}
+            </p>
+            <p className="text-[20px] sm:text-[30px] text-shadow-md">
               <em>{nextImg.subtext}</em>
             </p>
           </div>
@@ -209,35 +217,37 @@ export const MarketingSC = () => {
             alt=""
           />
         </div>
-        <div className="absolute inset-x-0 inset-y-[93%] z-30 max-w-[640px] m-auto flex flex-row justify-center">
+        <div className="absolute inset-x-0 inset-y-[90%] sm:inset-y-[96%] z-30 max-w-[640px] m-auto flex flex-row justify-center">
           {marketingData.map((el) => {
-            return <div key={el}>{currentImg === el ? `a` : `b`}</div>;
+            return (
+              <div
+                className=" m-2 transition-all w-[75px] h-[2.5px] bg-white rounded-md shadow-md"
+                key={el}
+                style={
+                  currentImg === el
+                    ? { background: `white` }
+                    : { background: `grey` }
+                }
+              ></div>
+            );
           })}
         </div>
-        <div className=" absolute inset-x-0 inset-y-0 z-30 max-w-[640px] m-auto flex flex-row justify-between max-h-[400px] rounded-xl ">
-          <div
-            onClick={() => handlePrev()}
-            className="hover:bg-[rgba(100,100,100,.5)] hover:transition-all transition-all active:bg-[rgba(0,0,0,0)] rounded-l-xl flex flex-row items-center cursor-pointer"
-          >
-            <img
-              className="w-[50px] cursor-pointer drop-shadow-lg"
-              type="button"
-              src="./assets/icons/chevron_left.svg"
-              alt=""
-            />
-          </div>
+        <div className=" items-center absolute inset-x-0 inset-y-0 z-30 max-w-[640px] m-auto flex flex-row justify-between max-h-[400px] rounded-xl ">
+          <Icon
+            className="hover:scale-[105%] active:scale-[95%] cursor-pointer"
+            path={mdiChevronLeftBox}
+            size={2}
+            color="white"
+            onClick={changing ? null : () => handlePrev()}
+          />
 
-          <div
-            onClick={() => handleNext()}
-            className="hover:bg-[rgba(100,100,100,.5)] rounded-r-xl flex flex-row items-center cursor-pointer active:bg-[rgba(0,0,0,0)]"
-          >
-            <img
-              className="w-[50px] cursor-pointer  "
-              type="button"
-              src="./assets/icons/chevron_right.svg"
-              alt=""
-            />
-          </div>
+          <Icon
+            className="hover:scale-[105%] active:scale-[95%] cursor-pointer"
+            path={mdiChevronRightBox}
+            onClick={changing ? null : () => handleNext()}
+            size={2}
+            color="white"
+          />
         </div>
         {prevImg && (
           <img

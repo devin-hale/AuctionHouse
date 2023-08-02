@@ -1,14 +1,20 @@
 [
     {
+        "id" : 2,
+        "text" : "Classic Styles",
+        "subtext": "Straight from '04",
+        "img" : "./assets/collections/classic.png"
+    },
+    {
         "id" : 0,
         "text" : "The Garrosh Collection",
-        "subtext": "Order Now",
+        "subtext": "Victory or Death",
         "img" : "./assets/collections/garroshM.png"
     },
     {
         "id" : 1,
-        "text" : "New from Abberus",
-        "subtext": "Order Now",
+        "text" : "Neltharion's Hoard",
+        "subtext": "Reclaim Your Legacy",
         "img" : "./assets/collections/abberus.png"
     }
 ]

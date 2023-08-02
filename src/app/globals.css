@@ -2,32 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+@layer utilities {
+  @variants hover, focus {
+    .text-shadow-none {
+      text-shadow: 0px 0px 0px;
+    }
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+    .text-shadow-sm {
+      text-shadow: 0px 0px 2.5px rgba(0,0,0,.90)
+    }
+  
+    .text-shadow-md {
+      text-shadow: 0px 0px 5px rgba(0,0,0,.90)
+    }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    .text-shadow-lg {
+      text-shadow: 0px 0px 10px rgba(0,0,0,.90)
+    }
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }

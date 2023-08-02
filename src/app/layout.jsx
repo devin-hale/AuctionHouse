@@ -1,6 +1,17 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import ReduxProvider from "./ReduxProvider";
+import localFont from "@next/font/local";
+
+const frizQuadrata = localFont({
+  src: "./fonts/friz-quadrata.otf",
+  variable: "--font-frizquad",
+});
+
+const lifeCraft = localFont({
+  src: "./fonts/LifeCraft.ttf",
+  variable: "--font-lifeCraft",
+});
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,8 +22,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html
+      lang="en"
+      className={`${frizQuadrata.variable} ${lifeCraft.variable}`}
+    >
+      <body className="subpixel-antialiased">
         <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
