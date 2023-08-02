@@ -77,7 +77,16 @@ export const MarketingSC = () => {
     }, 450);
   };
 
-  const handleStart = () => {};
+  const handleStyleFirst = () => {
+    switch (changing) {
+      case "next":
+        return {};
+      case "prev":
+        return { animation: "firstIn .5s ease forwards" };
+      case null:
+        return {};
+    }
+  };
 
   const handleStyleNext = () => {
     switch (changing) {
@@ -160,10 +169,7 @@ export const MarketingSC = () => {
 
   return (
     <div>
-      <div
-        className=" relative m-auto overflow-hidden text-center"
-        onClick={() => handleNext()}
-      >
+      <div className=" relative m-auto overflow-hidden text-center">
         <div
           className="drop-shadow-lg absolute inset-x-0 inset-y-0 z-30"
           style={handleTextCurrent()}
@@ -203,6 +209,31 @@ export const MarketingSC = () => {
             alt=""
           />
         </div>
+        <div className=" absolute inset-x-0 inset-y-0 z-30 max-w-[640px] m-auto flex flex-row justify-between max-h-[400px]">
+          <div
+            onClick={() => handlePrev()}
+            className="hover:bg-[rgba(100,100,100,.5)] flex flex-row items-center cursor-pointer"
+          >
+            <img
+              className="w-[50px] cursor-pointer"
+              type="button"
+              src="./assets/icons/chevron_left.svg"
+              alt=""
+            />
+          </div>
+
+          <div
+            onClick={() => handleNext()}
+            className="hover:bg-[rgba(100,100,100,.5)] flex flex-row items-center cursor-pointer"
+          >
+            <img
+              className="w-[50px] cursor-pointer"
+              type="button"
+              src="./assets/icons/chevron_right.svg"
+              alt=""
+            />
+          </div>
+        </div>
         {prevImg && (
           <img
             className="absolute inset-x-0 inset-y-0 m-auto translate-x-[-105%] opacity-[.5] scale-[90%] z-10"
@@ -225,6 +256,14 @@ export const MarketingSC = () => {
             src={lastImg.img}
             alt=""
             style={handleStyleLast()}
+          />
+        )}
+        {firstImg && (
+          <img
+            className="absolute inset-x-0 inset-y-0 m-auto translate-x-[-200%] opacity-[0] scale-[80%]"
+            src={firstImg.img}
+            alt=""
+            style={handleStyleFirst()}
           />
         )}
       </div>

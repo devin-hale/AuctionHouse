@@ -13,6 +13,11 @@
     100% { opacity: .5; transform: translateX(116.5%); scale: 90%;}
 }
 
+@keyframes firstIn {
+    0% {}
+    100% { opacity: .5; transform: translateX(-116.5%); scale: 90%;}
+}
+
 @keyframes prevIn {
     0%   {}
     100% { opacity: 1; transform: translateX(0%); scale: 100%;}
