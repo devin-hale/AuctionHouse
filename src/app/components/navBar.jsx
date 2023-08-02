@@ -19,12 +19,17 @@ const NavBar = () => {
     setIsMobile(mobileCheck);
   }, [mobileCheck]);
 
+  const pathName = window.location.pathname;
+
   return (
     <>
       {!isMobile && (
-        <div className=" w-[85%] flex flex-row justify-between m-auto text-[20px] mt-0 mb-3">
+        <div className=" w-[85%] flex flex-row justify-between font-frizquad hover:transition-all transition-all m-auto text-[20px] mt-0 mb-3">
           <div className="justify-evenly flex flex-row items-center">
-            <Link className=" hover:border-red-400 p-5 border-b-2" href="/">
+            <Link
+              className=" hover:border-red-400 hover:transition-all p-5 transition-all border-b-2 border-transparent"
+              href="/"
+            >
               Home
             </Link>
             <Link className="hover:bg-red-300 p-5" href="/shop">
@@ -34,7 +39,7 @@ const NavBar = () => {
               About
             </Link>
           </div>
-          <Link className="hover:bg-red-300 p-5 rounded-r-[25px]" href="/cart">
+          <Link className="p-5" href="/cart">
             Cart ({cartAmount})
           </Link>
         </div>

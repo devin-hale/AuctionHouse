@@ -29,8 +29,9 @@ module.exports = {
         // => @media (min-width: 1536px) { ... }
       },
       fontFamily: {
-        sans: ["var(--font-frizquad)", "sans-serif"],
+        frizquad: ["var(--font-frizquad)", "sans-serif"],
         lifeCraft: ["var(--font-lifeCraft)"],
+        sans: ["var(--font-openSans)"],
       },
     },
   },

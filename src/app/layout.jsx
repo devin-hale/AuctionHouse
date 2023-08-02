@@ -13,6 +13,22 @@ const lifeCraft = localFont({
   variable: "--font-lifeCraft",
 });
 
+const openSans = localFont({
+  src: [
+    {
+      path: "./fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "./fonts/OpenSans-VariableFont_wdth,wght.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-openSans",
+});
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -24,7 +40,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${frizQuadrata.variable} ${lifeCraft.variable} `}
+      className={`${openSans.variable} ${frizQuadrata.variable} ${lifeCraft.variable} `}
     >
       <body>
         <ReduxProvider>{children}</ReduxProvider>

@@ -47,11 +47,14 @@ export const ProductGrid = ({ typeFilter, uniqueTypeFilter }) => {
       return (
         <div key={item.id}>
           <div
-            className="border-solid border-white border-2 h-[250px] grid grid-cols-1 m-auto text-center max-w-[250px] cursor-pointer"
+            className="border-solid border-white border-2 bg-slate-400 h-[250px] grid grid-cols-1 m-auto text-center max-w-[250px] cursor-pointer"
             onClick={() => routerPush(item)}
           >
             <div>
-              <p className=" m-auto" style={{ color: `${itemColor(item)}` }}>
+              <p
+                className=" line-clamp-1 font-frizquad m-auto text-[17.5px]"
+                style={{ color: `${itemColor(item)}` }}
+              >
                 {item.name}
               </p>
               <p className="text-[#FFFC01]">{item.ilevel}</p>
