@@ -22,14 +22,19 @@ const NavBar = () => {
   return (
     <>
       {!isMobile && (
-        <div className=" w-[80%] border-2 flex flex-row justify-evenly border-white border-solid m-auto">
-          <Link className="hover:bg-red-300" href="/">
-            Home
-          </Link>
-          <Link className="hover:bg-red-300" href="/shop">
-            Shop
-          </Link>
-          <Link className="hover:bg-red-300" href="/cart">
+        <div className=" w-[85%] flex flex-row justify-between m-auto text-[20px] mt-0 mb-3">
+          <div className="justify-evenly flex flex-row items-center">
+            <Link className=" hover:border-red-400 p-5 border-b-2" href="/">
+              Home
+            </Link>
+            <Link className="hover:bg-red-300 p-5" href="/shop">
+              Shop
+            </Link>
+            <Link className="hover:bg-red-400 p-5" href="/">
+              About
+            </Link>
+          </div>
+          <Link className="hover:bg-red-300 p-5 rounded-r-[25px]" href="/cart">
             Cart ({cartAmount})
           </Link>
         </div>

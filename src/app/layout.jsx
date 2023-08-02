@@ -24,9 +24,9 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${frizQuadrata.variable} ${lifeCraft.variable}`}
+      className={`${frizQuadrata.variable} ${lifeCraft.variable} `}
     >
-      <body className="subpixel-antialiased">
+      <body>
         <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
