@@ -201,21 +201,26 @@ export const MarketingSC = () => {
             </p>
           </div>
         )}
-        <div className=" relative">
+        <div className=" rounded-xl relative">
           <img
-            className="z-20 m-auto"
+            className="rounded-xl z-20 m-auto"
             style={handleStyleCurrent()}
             src={currentImg.img}
             alt=""
           />
         </div>
-        <div className=" absolute inset-x-0 inset-y-0 z-30 max-w-[640px] m-auto flex flex-row justify-between max-h-[400px]">
+        <div className="absolute inset-x-0 inset-y-[93%] z-30 max-w-[640px] m-auto flex flex-row justify-center">
+          {marketingData.map((el) => {
+            return <div key={el}>{currentImg === el ? `a` : `b`}</div>;
+          })}
+        </div>
+        <div className=" absolute inset-x-0 inset-y-0 z-30 max-w-[640px] m-auto flex flex-row justify-between max-h-[400px] rounded-xl ">
           <div
             onClick={() => handlePrev()}
-            className="hover:bg-[rgba(100,100,100,.5)] flex flex-row items-center cursor-pointer"
+            className="hover:bg-[rgba(100,100,100,.5)] hover:transition-all transition-all active:bg-[rgba(0,0,0,0)] rounded-l-xl flex flex-row items-center cursor-pointer"
           >
             <img
-              className="w-[50px] cursor-pointer"
+              className="w-[50px] cursor-pointer drop-shadow-lg"
               type="button"
               src="./assets/icons/chevron_left.svg"
               alt=""
@@ -224,10 +229,10 @@ export const MarketingSC = () => {
 
           <div
             onClick={() => handleNext()}
-            className="hover:bg-[rgba(100,100,100,.5)] flex flex-row items-center cursor-pointer"
+            className="hover:bg-[rgba(100,100,100,.5)] rounded-r-xl flex flex-row items-center cursor-pointer active:bg-[rgba(0,0,0,0)]"
           >
             <img
-              className="w-[50px] cursor-pointer"
+              className="w-[50px] cursor-pointer  "
               type="button"
               src="./assets/icons/chevron_right.svg"
               alt=""
@@ -236,7 +241,7 @@ export const MarketingSC = () => {
         </div>
         {prevImg && (
           <img
-            className="absolute inset-x-0 inset-y-0 m-auto translate-x-[-105%] opacity-[.5] scale-[90%] z-10"
+            className="absolute inset-x-0 inset-y-0 m-auto translate-x-[-105%] opacity-[.5] scale-[90%] z-10 rounded-xl"
             src={prevImg.img}
             alt=""
             style={handleStylePrev()}
@@ -244,7 +249,7 @@ export const MarketingSC = () => {
         )}
         {nextImg && (
           <img
-            className="absolute inset-x-0 inset-y-0 m-auto translate-x-[105%] opacity-[.5] scale-[90%] z-10"
+            className="absolute inset-x-0 inset-y-0 m-auto translate-x-[105%] opacity-[.5] scale-[90%] z-10 rounded-xl "
             src={nextImg.img}
             alt=""
             style={handleStyleNext()}
@@ -252,7 +257,7 @@ export const MarketingSC = () => {
         )}
         {lastImg && (
           <img
-            className="absolute inset-x-0 inset-y-0 m-auto translate-x-[200%] opacity-[0] scale-[80%]"
+            className="absolute inset-x-0 inset-y-0 m-auto translate-x-[200%] opacity-[0] scale-[80%] rounded-xl"
             src={lastImg.img}
             alt=""
             style={handleStyleLast()}
@@ -260,7 +265,7 @@ export const MarketingSC = () => {
         )}
         {firstImg && (
           <img
-            className="absolute inset-x-0 inset-y-0 m-auto translate-x-[-200%] opacity-[0] scale-[80%]"
+            className="absolute inset-x-0 inset-y-0 m-auto translate-x-[-200%] opacity-[0] scale-[80%] rounded-xl"
             src={firstImg.img}
             alt=""
             style={handleStyleFirst()}
