@@ -60,7 +60,7 @@ const NavBar = () => {
         </div>
       )}
       {isMobile && (
-        <div className="justify-evenly fixed bottom-0 flex flex-row bg-slate-400 w-[100%] h-[5%] text-center items-center">
+        <div className="justify-evenly fixed bottom-0 flex flex-row bg-slate-400 w-[100%] h-[5%] text-center items-center z-[100]">
           <Link href="/" className="w-[33.3%]">
             <p>H</p>
           </Link>
