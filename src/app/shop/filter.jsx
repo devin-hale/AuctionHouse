@@ -3,13 +3,7 @@ import { useEffect } from "react";
 import itemData from "./../../data.JSON";
 import { useState } from "react";
 import Icon from "@mdi/react";
-import {
-  mdiFilter,
-  mdiChevronDown,
-  mdiChevronUp,
-  mdiSword,
-  mdiShield,
-} from "@mdi/js";
+import { mdiFilter, mdiChevronDown, mdiChevronUp } from "@mdi/js";
 
 export const Filters = ({
   typeFilter,

@@ -9,9 +9,10 @@ const ShoppingPage = () => {
   const [typeFilter, setTypeFilter] = useState("All");
   const [uniqueTypeFilter, setUniqueTypeFilter] = useState("All");
   const [sort, setSort] = useState({
-    quality: "des",
+    quality: null,
     abc: null,
     cost: null,
+    search: null,
   });
   return (
     <div>

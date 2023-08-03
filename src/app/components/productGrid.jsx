@@ -77,10 +77,29 @@ export const ProductGrid = ({ typeFilter, uniqueTypeFilter, sort }) => {
         ? arr.sort((a, b) => a.quality - b.quality)
         : arr.sort((a, b) => b.quality - b.quality);
     } else if (sort.cost !== null) {
+      sort.cost === "asc"
+        ? arr.sort(
+            (a, b) =>
+              individualCostMultiplier(1, a.priceG, a.priceS, a.priceC) -
+              individualCostMultiplier(1, b.priceG, b.priceS, b.priceC)
+          )
+        : arr.sort((a, b) =>
+            individualCostMultiplier(
+              1,
+              b.priceG,
+              b.priceS,
+              b.priceC -
+                individualCostMultiplier(1, a.priceG, a.priceS, a.priceC)
+            )
+          );
     } else {
       arr.sort((a, b) => a.id - b.id);
     }
     return arr;
+  };
+
+  const searchItems = (arr) => {
+    return arr.filter((item) => item.name.includes(`${sort.search}`));
   };
 
   const handleQuantity = (actionType, item) => {
@@ -101,7 +120,7 @@ export const ProductGrid = ({ typeFilter, uniqueTypeFilter, sort }) => {
   };
 
   const ItemDiv = () =>
-    sortItems([...filterItems()]).map((item) => {
+    searchItems(sortItems([...filterItems()])).map((item) => {
       if (!quantities[`${item.id}`])
         setQuantities({ ...quantities, [`${item.id}`]: 1 });
       return (
