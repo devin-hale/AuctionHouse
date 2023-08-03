@@ -8,6 +8,9 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+
+
+
 @layer utilities {
   @variants hover, focus {
     .text-shadow-none {

@@ -70,6 +70,21 @@ const ProductDetail = ({ params }) => {
     }
   };
 
+  const detailsBG = (item) => {
+    switch (item.quality) {
+      case 0:
+        return "bg-gradient-to-t from-slate-300 via-slate-100 to-slate-300";
+      case 1:
+        return "bg-gradient-to-t from-green-500 via-emerald-500 to-green-500";
+      case 2:
+        return "bg-gradient-to-t from-blue-600 via-sky-600 to-blue-600";
+      case 3:
+        return "bg-gradient-to-t from-violet-600 via-purple-500 to-violet-400";
+      case 4:
+        return "bg-gradient-to-t from-amber-500 via-orange-400 to-amber-500";
+    }
+  };
+
   return (
     <>
       <button
@@ -81,12 +96,18 @@ const ProductDetail = ({ params }) => {
         Back to Shop
       </button>
       <div
-        className={`p-2 border-2 border-solid w-[80%] rounded drop-shadow-[0px_2px_5px_rgba(0,0,0,.25)] bg-white m-auto mb-20 sm:mb-auto flex flex-col justify-between`}
-        style={{ borderColor: `${itemColor(item)}` }}
+        className={`p-2 border-2 border-solid w-[80%] rounded drop-shadow-[0px_2px_5px_rgba(0,0,0,.25)] bg-white m-auto mb-20 sm:mb-auto flex flex-col justify-between ${detailsBG(
+          item
+        )}`}
+        style={{
+          borderColor: `${itemColor(item)}`,
+        }}
       >
         <div>
           <div>
-            <p className="text-[25px] font-bold font-frizquad">{item.name}</p>
+            <p className="text-[25px] text-white text-shadow-md font-frizquad">
+              {item.name}
+            </p>
           </div>
           <div className="flex flex-row">
             <div
@@ -165,7 +186,7 @@ const ProductDetail = ({ params }) => {
             }}
             className=" justify-evenly flex flex-row items-center w-[100%] sm:w-[60%]"
           >
-            <div className="flex-nowrap flex flex-row items-center justify-center">
+            <div className="flex-nowrap flex flex-row items-center justify-center drop-shadow-[0_2px_4px_rgba(0,0,0,.45)]">
               {quantity !== 1 ? (
                 <Icon
                   path={mdiMinus}
@@ -177,7 +198,7 @@ const ProductDetail = ({ params }) => {
                   }}
                   className={`${itemBG(
                     item
-                  )} w-[20px] h-[20px] rounded select-none cursor-pointer hover:bg-yellow-200`}
+                  )} w-[20px] h-[20px] rounded select-none cursor-pointer hover:bg-yellow-200 active:scale-[90%]`}
                 />
               ) : (
                 <Icon
@@ -203,7 +224,7 @@ const ProductDetail = ({ params }) => {
                   }}
                   className={`${itemBG(
                     item
-                  )} w-[20px] h-[20px] rounded select-none cursor-pointer hover:bg-yellow-200`}
+                  )} w-[20px] h-[20px] rounded select-none cursor-pointer hover:bg-yellow-200 active:scale-[90%]`}
                 />
               ) : (
                 <Icon

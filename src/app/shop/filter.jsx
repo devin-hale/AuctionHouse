@@ -27,12 +27,13 @@ export const Filters = ({
           <div key={slottype}>
             <input
               type="radio"
+              readOnly
               checked={uniqueTypeFilter === slottype}
               onClick={() => setUniqueTypeFilter(slottype)}
               name="uniqueTypeFilter"
               id={slottype}
             ></input>
-            <label for={slottype}>{slottype}</label>
+            <label htmlFor={slottype}>{slottype}</label>
           </div>
         );
       });
@@ -44,6 +45,7 @@ export const Filters = ({
           <input
             type="radio"
             id={type}
+            readOnly
             name="itemTypeFilter"
             checked={typeFilter === type}
             onClick={() => {
@@ -51,7 +53,7 @@ export const Filters = ({
               setUniqueTypeFilter("All");
             }}
           ></input>
-          <label for={type}>{type}</label>
+          <label htmlFor={type}>{type}</label>
         </div>
       );
     });
@@ -63,31 +65,34 @@ export const Filters = ({
         <div key="All">
           <input
             type="radio"
-            defaultChecked="true"
             id="All"
             name="itemTypeFilter"
             checked={typeFilter === "All"}
+            readOnly
             onClick={() => {
               setTypeFilter("All");
               setUniqueTypeFilter("All");
             }}
           ></input>
-          <label for="All">All</label>
+          <label htmlFor="All">All</label>
         </div>
         <ItemTypeMap />
+      </div>
+      <br></br>
+      <div>
         {typeFilter !== "All" && (
           <div key="UniqueAll">
             <h2>{typeFilter} Type:</h2>
             <input
               type="radio"
               checked={uniqueTypeFilter === "All"}
-              defaultChecked="true"
               onClick={() => setUniqueTypeFilter("All")}
+              readOnly
               key="UniqueAll"
               id="UniqueAll"
               name="uniqueTypeFilter"
             ></input>
-            <label for="UniqueAll">All</label>
+            <label htmlFor="UniqueAll">All</label>
             <UniqueTypeMap />
           </div>
         )}
