@@ -106,7 +106,7 @@ export const ProductGrid = ({ typeFilter, uniqueTypeFilter }) => {
               style={{ border: `2px solid ${itemColor(item)}` }}
             />
             <p className=" m-auto">{item.type}</p>
-            <div className="flex flex-row flex-nowrap items-center m-auto w-[100%] h-[100%] justify-center">
+            <div className="flex-nowrap flex flex-row items-center drop-shadow-[0px_0px_4px_rgba(0,0,0,.75)] justify-center p-1 pl-3 m-auto font-bold bg-black border-2 border-white border-solid rounded">
               <div className="flex flex-row flex-nowrap w-[50px] items-center max-h-[20px] align-middle justify-evenly">
                 <p>{item.priceG}</p>
                 <Image
@@ -160,27 +160,30 @@ export const ProductGrid = ({ typeFilter, uniqueTypeFilter }) => {
                   <Icon
                     path={mdiMinus}
                     color={`white`}
-                    onClick={() => {
-                      if (quantities[`${item.id}`] > 1) {
-                        handleQuantity("dec", item);
-                      }
-                    }}
                     className="w-[20px] h-[20px] bg-gray-500 rounded select-none"
                   />
                 )}
                 <div className="w-[20px] text-black bg-white rounded m-2">
                   {quantities[`${item.id}`]}
                 </div>
-                <Icon
-                  path={mdiPlus}
-                  color={itemColor(item)}
-                  onClick={() => {
-                    if (quantities[`${item.id}`] < 99) {
-                      handleQuantity("inc", item);
-                    }
-                  }}
-                  className="w-[20px] h-[20px] bg-white rounded select-none hover:bg-yellow-200"
-                />
+                {quantities[`${item.id}`] !== 99 ? (
+                  <Icon
+                    path={mdiPlus}
+                    color={itemColor(item)}
+                    onClick={() => {
+                      if (quantities[`${item.id}`] < 99) {
+                        handleQuantity("inc", item);
+                      }
+                    }}
+                    className="w-[20px] h-[20px] bg-white rounded select-none hover:bg-yellow-200"
+                  />
+                ) : (
+                  <Icon
+                    path={mdiPlus}
+                    color={`white`}
+                    className="w-[20px] h-[20px] bg-gray-500 rounded select-none hover:bg-yellow-200"
+                  />
+                )}
               </div>
               <button
                 type="button"
