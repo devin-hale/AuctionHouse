@@ -22,8 +22,6 @@ const NavBar = () => {
     setIsMobile(mobileCheck);
   }, [mobileCheck]);
 
-  console.log(path);
-
   return (
     <>
       {!isMobile && (

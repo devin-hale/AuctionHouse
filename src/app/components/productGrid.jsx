@@ -8,7 +8,7 @@ import { mdiPlus, mdiMinus } from "@mdi/js";
 import Icon from "@mdi/react";
 import { useState } from "react";
 
-export const ProductGrid = ({ typeFilter, uniqueTypeFilter }) => {
+export const ProductGrid = ({ typeFilter, uniqueTypeFilter, sort }) => {
   const cart = useSelector((state) => state.cart.value);
   const itemDB = itemData;
   const dispatch = useDispatch();
@@ -18,6 +18,11 @@ export const ProductGrid = ({ typeFilter, uniqueTypeFilter }) => {
 
   const routerPush = (item) => {
     router.push(`/shop/${item.id}`);
+  };
+
+  const individualCostMultiplier = (itemQuantity, priceG, priceS, priceC) => {
+    const totalCopper = (priceG * 10000 + priceS * 100 + priceC) * itemQuantity;
+    return totalCopper;
   };
 
   const itemColor = (item) => {
@@ -62,6 +67,22 @@ export const ProductGrid = ({ typeFilter, uniqueTypeFilter }) => {
     }
   };
 
+  const sortItems = (arr) => {
+    if (sort.abc !== null) {
+      sort.abc === "asc"
+        ? arr.sort((a, b) => a.name.localeCompare(b.name))
+        : arr.sort((a, b) => b.name.localeCompare(a.name));
+    } else if (sort.quality !== null) {
+      sort.quality === "asc"
+        ? arr.sort((a, b) => a.quality - b.quality)
+        : arr.sort((a, b) => b.quality - b.quality);
+    } else if (sort.cost !== null) {
+    } else {
+      arr.sort((a, b) => a.id - b.id);
+    }
+    return arr;
+  };
+
   const handleQuantity = (actionType, item) => {
     switch (actionType) {
       case "inc":
@@ -80,7 +101,7 @@ export const ProductGrid = ({ typeFilter, uniqueTypeFilter }) => {
   };
 
   const ItemDiv = () =>
-    filterItems().map((item) => {
+    sortItems([...filterItems()]).map((item) => {
       if (!quantities[`${item.id}`])
         setQuantities({ ...quantities, [`${item.id}`]: 1 });
       return (

@@ -50,7 +50,7 @@ export const CartCost = () => {
     <div>
       <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[60%] m-auto">
         <p>Cart Total: </p>
-        <div className="flex flex-row flex-wrap sm:flex-nowrap items-center m-2 justify-evenly text-white">
+        <div className="sm:flex-nowrap justify-evenly flex flex-row flex-wrap items-center m-2 text-white">
           <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
             <p>{totalGoldCostAddUp(totalCartCopper).totalG}</p>
             <Image
@@ -83,7 +83,7 @@ export const CartCost = () => {
       </div>
       <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[60%] m-auto">
         <p>Shipping </p>
-        <div className="flex flex-row flex-wrap sm:flex-nowrap items-center m-2 justify-evenly text-white">
+        <div className="sm:flex-nowrap justify-evenly flex flex-row flex-wrap items-center m-2 text-white">
           <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
             <p>{totalGoldCostAddUp(shipping()).totalG}</p>
             <Image
@@ -116,7 +116,7 @@ export const CartCost = () => {
       </div>
       <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[60%] m-auto">
         <p>Taxes: </p>
-        <div className="flex flex-row flex-wrap sm:flex-nowrap items-center m-2 justify-evenly text-white">
+        <div className="sm:flex-nowrap justify-evenly flex flex-row flex-wrap items-center m-2 text-white">
           <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
             <p>{totalGoldCostAddUp(taxesTotal(totalCartCopper)).totalG}</p>
             <Image
@@ -153,7 +153,7 @@ export const CartCost = () => {
       </div>
       <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[60%] m-auto">
         <p>Order Total: </p>
-        <div className="flex flex-row flex-wrap sm:flex-nowrap items-center m-2 justify-evenly text-white">
+        <div className="sm:flex-nowrap justify-evenly flex flex-row flex-wrap items-center m-2 text-white">
           <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
             <p>
               {
