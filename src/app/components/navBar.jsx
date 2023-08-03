@@ -4,6 +4,8 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Icon from "@mdi/react";
+import { mdiCart, mdiShopping, mdiHome } from "@mdi/js";
 
 const NavBar = () => {
   const path = usePathname();
@@ -52,21 +54,32 @@ const NavBar = () => {
               About
             </Link>
           </div>
-          <Link className="p-5" href="/cart">
-            Cart ({cartAmount})
+          <Link
+            className={`flex-nowrap hover:transition-all hover:border-red-400 flex flex-row p-5 transition-all border-b-2 ${
+              path === `/cart` ? `border-b-red-400` : null
+            }
+            `}
+            href="/cart"
+          >
+            <Icon path={mdiCart} className="w-[30px]" />
+            <p>Cart ({cartAmount})</p>
           </Link>
         </div>
       )}
       {isMobile && (
-        <div className="justify-evenly fixed bottom-0 flex flex-row bg-slate-400 w-[100%] h-[5%] text-center items-center z-[100]">
-          <Link href="/" className="w-[33.3%]">
-            <p>H</p>
+        <div className="justify-evenly fixed bottom-0 flex flex-row bg-black w-[100%] h-[50px] text-center items-center z-[100]">
+          <Link href="/" className="w-[33.3%] flex justify-center">
+            <Icon path={mdiHome} color={`white`} className="w-[30px]" />
           </Link>
-          <Link href="/shop" className="w-[33.3%]">
-            <p>S</p>
+          <Link href="/shop" className="w-[33.3%] flex justify-center">
+            <Icon path={mdiShopping} color={`white`} className="w-[30px]" />
           </Link>
-          <Link href="/cart" className="w-[33.4%]">
-            <p>C({cartAmount})</p>
+          <Link
+            href="/cart"
+            className="w-[33.4%] flex flex-row flex-nowrap items-center justify-center"
+          >
+            <Icon path={mdiCart} color={`white`} className="w-[30px]" />
+            <p className="font-bold text-white">{cartAmount}</p>
           </Link>
         </div>
       )}

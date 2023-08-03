@@ -4,9 +4,13 @@ import itemData from "./../../data.JSON";
 import CartGrid from "./cartGrid";
 import { CartCost } from "./costComponent";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const CartPage = () => {
   const itemDB = itemData.items;
+
+  const router = useRouter();
 
   const cart = useSelector((state) => state.cart.value);
 
@@ -35,9 +39,19 @@ const CartPage = () => {
         </div>
       )}
       {cartAmount === 0 && (
-        <div>
-          <p>There are currently no items in your cart!</p>
-          <button type="button">Shopping Portal</button>
+        <div className=" w-[100%] h-[100%] flex flex-row justify-center">
+          <div className="w-fit flex flex-col items-center mt-[200px]">
+            <div className="">
+              <p className="font-frizquad text-center text-[30px]">Woops!</p>
+              <p>There are currently no items in your cart.</p>
+            </div>
+            <Link
+              href="/shop"
+              className=" bg-amber-400 p-3 font-bold text-black rounded drop-shadow-[0_2px_4px_rgba(0,0,0,.3)]"
+            >
+              Go To Shopping Portal
+            </Link>
+          </div>
         </div>
       )}
     </>
