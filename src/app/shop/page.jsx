@@ -27,7 +27,9 @@ const ShoppingPage = () => {
   return (
     <div>
       <br></br>
-      <Sort sort={sort} setSort={setSort} />
+      <div>
+        <Sort sort={sort} setSort={setSort} />
+      </div>
       <div className="flex flex-row w-[100%]">
         <div
           className={`${

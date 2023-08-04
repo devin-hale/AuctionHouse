@@ -67,7 +67,7 @@ const NavBar = () => {
         </div>
       )}
       {isMobile && (
-        <div className="justify-evenly fixed bottom-0 flex flex-row bg-black w-[100%] h-[50px] text-center items-center z-[100]">
+        <div className="justify-evenly fixed bottom-[-2.5px] flex flex-row bg-black w-[100%] h-[50px] text-center items-center z-[100]">
           <Link href="/" className="w-[33.3%] flex justify-center">
             <Icon path={mdiHome} color={`white`} className="w-[30px]" />
           </Link>
