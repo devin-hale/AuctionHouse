@@ -60,19 +60,17 @@ const CartGrid = () => {
           <div
             key={item.item.id}
             className={`flex flex-row justify-evenly bg-gradient-to-t from-gray-200 to-slate-50 text-black border-2 border-solid border-white rounded drop-shadow-[0_2px_4px_rgba(0,0,0,.25)] mt-2 mb-2 p-2 items-center w-[100%] m-auto relative ${
-              isMobile ? `p-4` : null
+              isMobile ? `p-6` : null
             }`}
           >
             {/* Item Image */}
             <div
               className={`${
-                isMobile ? `w-[45%]` : `w-[25%]`
+                isMobile ? `min-w-[25%] translate-x-8` : `w-[25%]`
               } flex flex-row items-center justify-evenly drop-shadow-[0_2px_4px_rgba(0,0,0,.25)]`}
             >
-              <Image
-                className="rounded m-auto w-[75px]"
-                width={100}
-                height={100}
+              <img
+                className="m-auto rounded w-[75px]"
                 src={item.item.img}
                 style={{ border: `2px solid ${itemColor(item.item)}` }}
                 alt=""
@@ -189,7 +187,7 @@ const CartGrid = () => {
               }}
               className="w-[25px] h-[20px] text-red-500 border-solid border-red-500 border-2 rounded text-center transition-all hover:transition-all hover:bg-red-300 cursor-pointer"
             >
-              <p className="mt-[-5px]">x</p>
+              <p className="mt-[-10px] font-bold p-1">x</p>
             </div>
           </div>
         );

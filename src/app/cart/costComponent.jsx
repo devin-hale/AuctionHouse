@@ -1,6 +1,7 @@
 "use client";
 import { useSelector } from "react-redux";
 import Image from "next/image";
+import Icon from "@mdi/react";
 
 export const CartCost = () => {
   const cart = useSelector((state) => state.cart.value);
@@ -152,7 +153,7 @@ export const CartCost = () => {
         </div>
       </div>
       <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[60%] m-auto">
-        <p className="font-bold underline">ORDER TOTAL: </p>
+        <p className="line-clamp-1 font-bold underline">TOTAL: </p>
         <div className="sm:flex-nowrap justify-evenly flex flex-row flex-wrap items-center m-2 text-white bg-black border-solid border-2 border-white drop-shadow-[0px_2px_5px_rgba(0,0,0,.25)] p-2 rounded">
           <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
             <p>
