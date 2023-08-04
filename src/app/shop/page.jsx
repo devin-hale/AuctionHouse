@@ -3,8 +3,6 @@ import { ProductGrid } from "../components/productGrid";
 import { Filters } from "./filter";
 import { useState } from "react";
 import { Sort } from "./sort";
-import { useMediaQuery } from "@uidotdev/usehooks";
-import { useEffect } from "react";
 
 const ShoppingPage = () => {
   const [typeFilter, setTypeFilter] = useState("All");
@@ -16,13 +14,6 @@ const ShoppingPage = () => {
     search: "",
   });
 
-  const mobileCheck = useMediaQuery("only screen and (max-width : 640px)");
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    setIsMobile(mobileCheck);
-  }, [mobileCheck]);
-
   return (
     <div>
       <br></br>
@@ -31,9 +22,7 @@ const ShoppingPage = () => {
       </div>
       <div className="flex flex-row w-[100%]">
         <div
-          className={`${
-            !isMobile ? `w-[20%]` : `fixed inset-y-0 inset-x-0 z-10 w-fit`
-          }`}
+          className={`fixed inset-y-0 inset-x-0 z-10 w-fit sm:w-[20%] sm:relative sm:inset-y-auto sm:inset-x-auto sm:z-10 `}
         >
           <Filters
             typeFilter={typeFilter}
@@ -44,7 +33,7 @@ const ShoppingPage = () => {
             setSort={setSort}
           />
         </div>
-        <div className={`${!isMobile ? `w-[80%]` : `w-[100%] mb-[100px]`}`}>
+        <div className={` w-[100%] mb-[100px] sm:w-[80%] sm:mb-[100px]`}>
           <ProductGrid
             typeFilter={typeFilter}
             uniqueTypeFilter={uniqueTypeFilter}

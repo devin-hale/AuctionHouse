@@ -12,7 +12,6 @@
     "@mdi/js": "^7.2.96",
     "@mdi/react": "^1.6.1",
     "@reduxjs/toolkit": "^1.9.5",
-    "@uidotdev/usehooks": "^2.0.1",
     "autoprefixer": "10.4.14",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",

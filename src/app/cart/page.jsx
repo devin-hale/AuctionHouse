@@ -1,17 +1,10 @@
 "use client";
-import NavBar from "../components/navBar";
-import itemData from "./../../data.JSON";
 import CartGrid from "./cartGrid";
 import { CartCost } from "./costComponent";
 import { useSelector } from "react-redux";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const CartPage = () => {
-  const itemDB = itemData.items;
-
-  const router = useRouter();
-
   const cart = useSelector((state) => state.cart.value);
 
   const cartAmount = cart.reduce(
@@ -35,18 +28,18 @@ const CartPage = () => {
             >
               Continue Shopping
             </Link>
-            <button
-              type="button"
+            <Link
+              href="/checkout"
               className="p-2 font-semibold text-black bg-amber-300 rounded shadow-[0_0_5px_rgba(0,0,0,.5)] hover:bg-yellow-200 hover:transition-all transition-all h-fit"
             >
               Check Out
-            </button>
+            </Link>
           </div>
         </div>
       )}
       {cartAmount === 0 && (
-        <div className=" w-[100%] h-[100%] flex flex-row justify-center">
-          <div className="w-fit flex flex-col items-center mt-[200px]">
+        <div className=" w-[100%] h-[100%] flex flex-col justify-center items-center">
+          <div className="w-fit flex flex-col justify-evenly items-center mt-[200px] h-[250px]">
             <div className="">
               <p className="font-frizquad text-center text-[30px]">Woops!</p>
               <p>There are currently no items in your cart.</p>
