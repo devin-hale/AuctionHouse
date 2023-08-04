@@ -2,7 +2,7 @@
 import Icon from "@mdi/react";
 import { mdiChevronLeftBox, mdiChevronRightBox } from "@mdi/js";
 import marketingData from "./marketing.JSON";
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import "./marketingSC.css";
 
 export const MarketingSC = () => {

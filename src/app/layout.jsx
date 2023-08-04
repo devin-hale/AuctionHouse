@@ -43,7 +43,9 @@ export default function RootLayout({ children }) {
       className={`${openSans.variable} ${frizQuadrata.variable} ${lifeCraft.variable} `}
     >
       <body className="pt-0 mt-0">
-        <ReduxProvider>{children}</ReduxProvider>
+        <ReduxProvider>
+          {typeof window === undefined ? null : children}
+        </ReduxProvider>
       </body>
     </html>
   );

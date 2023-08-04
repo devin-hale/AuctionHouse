@@ -1,7 +1,6 @@
 "use client";
 import { useSelector } from "react-redux";
 import Image from "next/image";
-import Icon from "@mdi/react";
 
 export const CartCost = () => {
   const cart = useSelector((state) => state.cart.value);

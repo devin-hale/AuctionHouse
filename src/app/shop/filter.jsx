@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import itemData from "./../../data.JSON";
 import { useState } from "react";
 import Icon from "@mdi/react";
-import { mdiFilter, mdiChevronDown, mdiChevronUp, mdiClose } from "@mdi/js";
+import { mdiFilter, mdiClose } from "@mdi/js";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import "./filter.css";
 

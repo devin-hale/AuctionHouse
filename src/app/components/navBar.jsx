@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useSelector } from "react-redux";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";

@@ -1,5 +1,4 @@
 "use client";
-import NavBar from "../components/navBar";
 import { ProductGrid } from "../components/productGrid";
 import { Filters } from "./filter";
 import { useState } from "react";
