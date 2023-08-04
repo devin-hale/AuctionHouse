@@ -4,9 +4,13 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
 const CheckOut = () => {
   const cart = useSelector((state) => state.cart.value);
+  const [addressState, setAddress] = useState(null);
+  const [cardState, setCardState] = useState(null);
+  const router = useRouter();
 
   const itemColor = (item) => {
     switch (item.quality) {
@@ -23,7 +27,7 @@ const CheckOut = () => {
     }
   };
 
-  const individualCostMultiplier = (itemQuantity, priceG, priceS, priceC) => {
+  const individualCost = (itemQuantity, priceG, priceS, priceC) => {
     const totalCopper = (priceG * 10000 + priceS * 100 + priceC) * itemQuantity;
     const totalG = Math.floor(totalCopper / 10000);
     const totalS = Math.floor((totalCopper - totalG * 10000) / 100);
@@ -34,6 +38,12 @@ const CheckOut = () => {
   const handleInputChange = (e, item) => {
     dispatch(setProductAmount({ item: item, value: e.target.value }));
   };
+
+  const address = [
+    { address: `1337 Thrall Street`, city: `Orgrimmar`, region: `Durotar` },
+    { address: `805 Wrynn Circle`, city: `Stormwind`, region: `Elwynn Forest` },
+    { address: `441 Windrunner Lane`, city: `Undercity`, region: `Lordaeron` },
+  ];
 
   const MapCart = () =>
     cart.map((item) => {
@@ -76,7 +86,7 @@ const CheckOut = () => {
               <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
                 <p>
                   {
-                    individualCostMultiplier(
+                    individualCost(
                       item.amount,
                       item.item.priceG,
                       item.item.priceS,
@@ -95,7 +105,7 @@ const CheckOut = () => {
               <div className="flex flex-row flex-nowrap w-[50px] max-h-[20px] items-center align-middle justify-evenly">
                 <p>
                   {
-                    individualCostMultiplier(
+                    individualCost(
                       item.amount,
                       item.item.priceG,
                       item.item.priceS,
@@ -113,7 +123,7 @@ const CheckOut = () => {
               <div className="flex flex-row max-h-[20px] align-middle items-center justify-evenly">
                 <p>
                   {
-                    individualCostMultiplier(
+                    individualCost(
                       item.amount,
                       item.item.priceG,
                       item.item.priceS,
@@ -133,23 +143,182 @@ const CheckOut = () => {
         );
     });
 
+  const individualCostMultiplier = (itemQuantity, priceG, priceS, priceC) => {
+    const totalCopper = (priceG * 10000 + priceS * 100 + priceC) * itemQuantity;
+    return totalCopper;
+  };
+
+  const totalCartCopper = cart.reduce(
+    (accumulator, currentItem) =>
+      accumulator +
+      individualCostMultiplier(
+        currentItem.amount,
+        currentItem.item.priceG,
+        currentItem.item.priceS,
+        currentItem.item.priceC
+      ),
+    0
+  );
+
+  const totalGoldCostAddUp = (totalCopper) => {
+    const totalG = Math.floor(totalCopper / 10000);
+    const totalS = Math.floor((totalCopper - totalG * 10000) / 100);
+    const totalC = totalCopper - totalG * 10000 - totalS * 100;
+    return { totalG: totalG, totalS: totalS, totalC: totalC };
+  };
+
+  const taxesTotal = (totalCopper) => {
+    return totalCopper * 0.1;
+  };
+
+  const shipping = () => {
+    return (
+      cart.reduce(
+        (accumulator, currentItem) => accumulator + currentItem.amount,
+        0
+      ) * 30000
+    );
+  };
+
+  const totalCost = (totalCartCopper, taxesTotal, shipping) => {
+    return totalGoldCostAddUp(totalCartCopper + taxesTotal + shipping);
+  };
+
+  const paymentMethod = [
+    {
+      cardName: `Azerothian Express`,
+      cardNumber: `XXXX XXXX XXXX 5162`,
+      cardExp: `08/25`,
+      cardHold: `T. HEEDYR`,
+    },
+    {
+      cardName: `Catapault One`,
+      cardNumber: `XXXX XXXX XXXX 8224`,
+      cardExp: `04/27`,
+      cardHold: `L. JENKINS`,
+    },
+  ];
+
   return (
-    <div>
+    <div className="flex flex-col items-center mb-[75px]">
       <div className="w-fit m-auto">
         <p className="font-frizquad font-bold">Your Cart:</p>
         <MapCart />
       </div>
-      <div className="m-auto">
-        <p>Please select your address:</p>
-        <div>
-          <div>
-            <p>Orgrimmar</p>
-            <p>Stormwind</p>
-            <p>Undercity</p>
-            <p>Ironforge</p>
+      <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[85%] m-auto">
+        <p className="line-clamp-1 font-bold underline">TOTAL: </p>
+        <div className="sm:flex-nowrap justify-evenly flex flex-row flex-wrap items-center m-2 text-white bg-black border-solid border-2 border-white drop-shadow-[0px_2px_5px_rgba(0,0,0,.25)] p-2 rounded">
+          <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
+            <p>
+              {
+                totalCost(
+                  totalCartCopper,
+                  taxesTotal(totalCartCopper),
+                  shipping()
+                ).totalG
+              }
+            </p>
+            <Image
+              className="m-auto"
+              height={20}
+              width={20}
+              src="/assets/goldIMG/Gold.webp"
+              alt="Gold"
+            />
+          </div>
+          <div className="flex flex-row flex-nowrap w-[50px] max-h-[20px] items-center align-middle justify-evenly">
+            <p>
+              {
+                totalCost(
+                  totalCartCopper,
+                  taxesTotal(totalCartCopper),
+                  shipping()
+                ).totalS
+              }
+            </p>
+            <Image
+              height={10}
+              width={20}
+              src="/assets/goldIMG/Silver.webp"
+              alt="Silver"
+            />
+          </div>
+          <div className="flex flex-row flex-nowrap w-[50px] max-h-[20px] align-middle items-center justify-evenly">
+            <p>
+              {Math.floor(
+                totalCost(
+                  totalCartCopper,
+                  taxesTotal(totalCartCopper),
+                  shipping()
+                ).totalC
+              )}
+            </p>
+            <Image
+              height={10}
+              width={20}
+              src="/assets/goldIMG/Copper.webp"
+              alt="Copper"
+            />
           </div>
         </div>
       </div>
+
+      <div className="w-fit m-auto">
+        <p className="p-1 font-bold underline">Please select your address:</p>
+
+        <div className="flex flex-row flex-wrap">
+          {address.map((info) => (
+            <div
+              key={info.city}
+              className="w-fit line-clamp-3 p-1 border-white hover:bg-white hover:text-black cursor-pointer active:scale-[98%] border-2 rounded-md drop-shadow-[0_2px_4px_rgba(0,0,0,0.25)] m-2"
+              style={
+                addressState === info.city
+                  ? { color: `black`, backgroundColor: `white` }
+                  : { color: `white`, backgroundColor: `black` }
+              }
+              onClick={() => setAddress(info.city)}
+            >
+              <p>{info.address}</p>
+              <p>{info.city}</p>
+              <p>{info.region}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="w-fit m-auto">
+        <p className="font-bold underline">Choose a payment method:</p>
+        <div className="flex flex-row flex-wrap">
+          {paymentMethod.map((pay) => (
+            <div
+              key={pay.cardName}
+              className="w-fit line-clamp-4 p-1 border-white hover:bg-white hover:text-black cursor-pointer active:scale-[98%] border-2 rounded-md drop-shadow-[0_2px_4px_rgba(0,0,0,0.25)] m-2"
+              style={
+                cardState === pay.cardName
+                  ? { color: `black`, backgroundColor: `white` }
+                  : { color: `white`, backgroundColor: `black` }
+              }
+              onClick={() => setCardState(pay.cardName)}
+            >
+              <p>{pay.cardName}</p>
+              <p>{pay.cardNumber}</p>
+              <p>{pay.cardExp}</p>
+              <p>{pay.cardHold}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <button
+        type="button"
+        className={` ${
+          cardState && addressState
+            ? `bg-amber-400`
+            : `bg-slate-500 cursor-default`
+        } bg-amber-400 p-3 font-bold text-black rounded drop-shadow-[0_2px_4px_rgba(0,0,0,.3)] m-4`}
+      >
+        Place Order
+      </button>
     </div>
   );
 };
