@@ -20,15 +20,15 @@ const CartPage = () => {
   );
 
   return (
-    <>
+    <div>
       {cartAmount > 0 && (
         <div>
-          <br></br>
+          <p className=" w-fit font-frizquad m-auto text-[30px]">Your Cart:</p>
           <div className="max-w-[850px] m-auto">
             <CartGrid />
             <CartCost />
           </div>
-          <div className="flex flex-row justify-between m-auto w-[85%] sm:w-[60%] mt-5 items-end">
+          <div className="flex flex-row justify-between m-auto w-[85%] sm:w-[60%] mt-5 items-end pb-20">
             <Link
               href="/shop"
               className="p-2 font-semibold text-black bg-amber-300 rounded shadow-[0_0_5px_rgba(0,0,0,.5)] hover:bg-yellow-200 hover:transition-all transition-all h-fit"
@@ -60,7 +60,7 @@ const CartPage = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

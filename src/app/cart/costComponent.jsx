@@ -47,8 +47,8 @@ export const CartCost = () => {
   };
 
   return (
-    <div>
-      <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[60%] m-auto">
+    <div className="w-[100%]">
+      <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[85%] m-auto">
         <p>Cart Total: </p>
         <div className="sm:flex-nowrap justify-evenly flex flex-row flex-wrap items-center m-2 text-white bg-black border-solid border-2 border-white drop-shadow-[0px_2px_5px_rgba(0,0,0,.25)] p-2 rounded">
           <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
@@ -81,7 +81,7 @@ export const CartCost = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[60%] m-auto">
+      <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[85%] m-auto">
         <p>Shipping: </p>
         <div className="sm:flex-nowrap justify-evenly flex flex-row flex-wrap items-center m-2 text-white bg-black border-solid border-2 border-white drop-shadow-[0px_2px_5px_rgba(0,0,0,.25)] p-2 rounded">
           <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
@@ -114,7 +114,7 @@ export const CartCost = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[60%] m-auto">
+      <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[85%] m-auto">
         <p>Taxes: </p>
         <div className="sm:flex-nowrap justify-evenly flex flex-row flex-wrap items-center m-2 text-white bg-black border-solid border-2 border-white drop-shadow-[0px_2px_5px_rgba(0,0,0,.25)] p-2 rounded">
           <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
@@ -151,7 +151,7 @@ export const CartCost = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[60%] m-auto">
+      <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[85%] m-auto">
         <p className="line-clamp-1 font-bold underline">TOTAL: </p>
         <div className="sm:flex-nowrap justify-evenly flex flex-row flex-wrap items-center m-2 text-white bg-black border-solid border-2 border-white drop-shadow-[0px_2px_5px_rgba(0,0,0,.25)] p-2 rounded">
           <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
