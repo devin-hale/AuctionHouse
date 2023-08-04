@@ -50,7 +50,7 @@ export const CartCost = () => {
     <div>
       <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[60%] m-auto">
         <p>Cart Total: </p>
-        <div className="sm:flex-nowrap justify-evenly flex flex-row flex-wrap items-center m-2 text-white">
+        <div className="sm:flex-nowrap justify-evenly flex flex-row flex-wrap items-center m-2 text-white bg-black border-solid border-2 border-white drop-shadow-[0px_2px_5px_rgba(0,0,0,.25)] p-2 rounded">
           <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
             <p>{totalGoldCostAddUp(totalCartCopper).totalG}</p>
             <Image
@@ -61,7 +61,7 @@ export const CartCost = () => {
               alt="Gold"
             />
           </div>
-          <div className="flex flex-row flex-nowrap w-[50px] max-h-[20px] items-center align-middle justify-evenly">
+          <div className="flex flex-row flex-nowrap w-[50px] max-h-[20px] items-center align-middle justify-evenly ">
             <p>{totalGoldCostAddUp(totalCartCopper).totalS}</p>
             <Image
               height={10}
@@ -82,8 +82,8 @@ export const CartCost = () => {
         </div>
       </div>
       <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[60%] m-auto">
-        <p>Shipping </p>
-        <div className="sm:flex-nowrap justify-evenly flex flex-row flex-wrap items-center m-2 text-white">
+        <p>Shipping: </p>
+        <div className="sm:flex-nowrap justify-evenly flex flex-row flex-wrap items-center m-2 text-white bg-black border-solid border-2 border-white drop-shadow-[0px_2px_5px_rgba(0,0,0,.25)] p-2 rounded">
           <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
             <p>{totalGoldCostAddUp(shipping()).totalG}</p>
             <Image
@@ -116,7 +116,7 @@ export const CartCost = () => {
       </div>
       <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[60%] m-auto">
         <p>Taxes: </p>
-        <div className="sm:flex-nowrap justify-evenly flex flex-row flex-wrap items-center m-2 text-white">
+        <div className="sm:flex-nowrap justify-evenly flex flex-row flex-wrap items-center m-2 text-white bg-black border-solid border-2 border-white drop-shadow-[0px_2px_5px_rgba(0,0,0,.25)] p-2 rounded">
           <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
             <p>{totalGoldCostAddUp(taxesTotal(totalCartCopper)).totalG}</p>
             <Image
@@ -152,8 +152,8 @@ export const CartCost = () => {
         </div>
       </div>
       <div className="flex flex-row items-center text-[20px] justify-end w-[85%] sm:w-[60%] m-auto">
-        <p>Order Total: </p>
-        <div className="sm:flex-nowrap justify-evenly flex flex-row flex-wrap items-center m-2 text-white">
+        <p className="font-bold underline">ORDER TOTAL: </p>
+        <div className="sm:flex-nowrap justify-evenly flex flex-row flex-wrap items-center m-2 text-white bg-black border-solid border-2 border-white drop-shadow-[0px_2px_5px_rgba(0,0,0,.25)] p-2 rounded">
           <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
             <p>
               {

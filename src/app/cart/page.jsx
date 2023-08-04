@@ -29,10 +29,16 @@ const CartPage = () => {
             <CartCost />
           </div>
           <div className="flex flex-row justify-between m-auto w-[85%] sm:w-[60%] mt-5 items-end">
-            <button type="button" className="text-black bg-white">
+            <Link
+              href="/shop"
+              className="p-2 font-semibold text-black bg-amber-300 rounded shadow-[0_0_5px_rgba(0,0,0,.5)] hover:bg-yellow-200 hover:transition-all transition-all h-fit"
+            >
               Continue Shopping
-            </button>
-            <button type="button" className="text-black bg-white">
+            </Link>
+            <button
+              type="button"
+              className="p-2 font-semibold text-black bg-amber-300 rounded shadow-[0_0_5px_rgba(0,0,0,.5)] hover:bg-yellow-200 hover:transition-all transition-all h-fit"
+            >
               Check Out
             </button>
           </div>

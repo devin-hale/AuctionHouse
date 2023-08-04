@@ -11,12 +11,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { RemoveModal } from "../components/deleteConfirmation";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 const CartGrid = () => {
   const cart = useSelector((state) => state.cart.value);
   const dispatch = useDispatch();
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [deleteItem, setDeleteItem] = useState(null);
+
+  const mobileCheck = useMediaQuery("only screen and (max-width : 640px)");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(mobileCheck);
+  }, [mobileCheck]);
 
   const itemColor = (item) => {
     switch (item.quality) {
@@ -51,23 +59,33 @@ const CartGrid = () => {
         return (
           <div
             key={item.item.id}
-            className="flex flex-row justify-evenly bg-slate-600 p-2 items-center w-[100%] m-auto relative"
+            className={`flex flex-row justify-evenly bg-gradient-to-t from-gray-200 to-slate-50 text-black border-2 border-solid border-white rounded drop-shadow-[0_2px_4px_rgba(0,0,0,.25)] mt-2 mb-2 p-2 items-center w-[100%] m-auto relative ${
+              isMobile ? `p-4` : null
+            }`}
           >
             {/* Item Image */}
-            <div className="w-[25%] flex flex-row items-center justify-evenly">
+            <div
+              className={`${
+                isMobile ? `w-[45%]` : `w-[25%]`
+              } flex flex-row items-center justify-evenly drop-shadow-[0_2px_4px_rgba(0,0,0,.25)]`}
+            >
               <Image
-                className="rounded m-auto w-[50px]"
-                width={50}
-                height={50}
+                className="rounded m-auto w-[75px]"
+                width={100}
+                height={100}
                 src={item.item.img}
                 style={{ border: `2px solid ${itemColor(item.item)}` }}
                 alt=""
               />
             </div>
             {/* Item Name */}
-            <div className="min-w-[75px] sm:min-w-[150px]">
+            <div className="min-w-[75px] sm:min-w-[150px] select-none z-0">
               <p
-                className="text-center text-[12px] w-[10%] sm:text-[15px] sm:w-auto m-4"
+                className={`text-center text-[17.5px] font-frizquad ${
+                  isMobile
+                    ? `absolute w-[100%] inset-x-[-15px] inset-y-[-15px] h-fit`
+                    : `w-[10%]`
+                } sm:text-[25px] sm:w-auto m-4`}
                 style={{ color: `${itemColor(item.item)}` }}
               >
                 {item.item.name}
@@ -106,7 +124,7 @@ const CartGrid = () => {
               </div>
             </div>
             {/* Gold Cost */}
-            <div className="flex flex-row flex-wrap sm:flex-nowrap items-center m-2 justify-evenly min-w-[25px] sm:min-w-[125px]">
+            <div className="flex flex-row font-bold flex-wrap sm:flex-nowrap items-center m-2 justify-evenly min-w-[25px] sm:min-w-[125px]">
               <div className="flex flex-row flex-nowrap items-center max-h-[20px] align-middle justify-evenly">
                 <p>
                   {

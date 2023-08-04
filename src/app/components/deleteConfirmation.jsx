@@ -23,9 +23,15 @@ export const RemoveModal = ({ item, deleteConfirm, setDeleteConfirm }) => {
   };
 
   return (
-    <div className="bg-[rgba(0,0,0,.75)] fixed w-[100%] h-[100%] z-10">
-      <div className="w-fit h-fit fixed inset-x-0 inset-y-0 flex flex-col items-center p-1 m-auto text-center text-black bg-white rounded">
-        <p>Remove [{item.item.name}] from Cart?</p>
+    <div className="bg-[rgba(0,0,0,.75)] fixed inset-x-0 inset-y-0 z-10">
+      <div className="w-fit h-fit bg-gray-950 fixed inset-x-0 inset-y-0 flex flex-col items-center p-1 m-auto text-center text-white border-2 border-white border-solid rounded">
+        <p>
+          Remove{" "}
+          <span style={{ color: `${itemColor(item.item)}` }}>
+            [{item.item.name}]
+          </span>{" "}
+          from Cart?
+        </p>
         <br></br>
         <Image
           className="rounded m-auto w-[100px]"
@@ -43,7 +49,7 @@ export const RemoveModal = ({ item, deleteConfirm, setDeleteConfirm }) => {
               setDeleteConfirm(!deleteConfirm);
               dispatch(removeProduct(item.item));
             }}
-            className="border-red-400 border-solid border-2 rounded p-1 text-[14px] cursor-pointer transition-all hover:transition-all hover:bg-red-300"
+            className="border-red-400 mr-2 border-solid border-2 rounded p-1 text-[14px] cursor-pointer transition-all hover:transition-all hover:bg-red-300"
           >
             Remove
           </button>
