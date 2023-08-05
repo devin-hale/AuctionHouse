@@ -1,15 +1,17 @@
 "use client";
 import itemData from "./../../data.JSON";
 import Image from "next/image";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addProduct } from "./cartSlice";
 import { useRouter } from "next/navigation";
 import { mdiPlus, mdiMinus } from "@mdi/js";
 import Icon from "@mdi/react";
 import { useState } from "react";
+import { useContext } from "react";
+import { ShopContext } from "../shop/page";
 
-export const ProductGrid = ({ typeFilter, uniqueTypeFilter, sort }) => {
-  const cart = useSelector((state) => state.cart.value);
+export const ProductGrid = () => {
+  const { typeFilter, uniqueTypeFilter, sort } = useContext(ShopContext);
   const itemDB = itemData;
   const dispatch = useDispatch();
   const router = useRouter();

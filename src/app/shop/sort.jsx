@@ -8,12 +8,16 @@ import {
   mdiSortDescending,
 } from "@mdi/js";
 import { useState } from "react";
+import { useContext } from "react";
+import { ShopContext } from "./page";
 
-export const Sort = ({ sort, setSort }) => {
+export const Sort = () => {
   const individualCostMultiplier = (itemQuantity, priceG, priceS, priceC) => {
     const totalCopper = (priceG * 10000 + priceS * 100 + priceC) * itemQuantity;
     return totalCopper;
   };
+
+  const { sort, setSort } = useContext(ShopContext);
 
   const [mobileShow, setMobileShow] = useState(false);
 
@@ -28,7 +32,10 @@ export const Sort = ({ sort, setSort }) => {
           type="text"
           placeholder={`Search`}
           maxLength={25}
-          onChange={(e) => setSort({ ...sort, search: `${e.target.value}` })}
+          onChange={(e) => {
+            e.target.value = e.target.value;
+            setSort({ ...sort, search: `${e.target.value}` });
+          }}
         />
       </div>
       {/** Desktop */}

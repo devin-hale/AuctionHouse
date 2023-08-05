@@ -4,14 +4,13 @@ import { useState } from "react";
 import Icon from "@mdi/react";
 import { mdiFilter, mdiClose } from "@mdi/js";
 import "./filter.css";
+import { useContext } from "react";
+import { ShopContext } from "./page";
 
-export const Filters = ({
-  typeFilter,
-  setTypeFilter,
-  uniqueTypeFilter,
-  setUniqueTypeFilter,
-}) => {
+export const Filters = () => {
   const itemDB = itemData;
+  const { typeFilter, setTypeFilter, uniqueTypeFilter, setUniqueTypeFilter } =
+    useContext(ShopContext);
 
   const itemTypeMap = itemDB.items.map((item) => item.itemtype);
 
