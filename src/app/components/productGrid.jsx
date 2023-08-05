@@ -6,17 +6,17 @@ import { addProduct } from "./cartSlice";
 import { useRouter } from "next/navigation";
 import { mdiPlus, mdiMinus } from "@mdi/js";
 import Icon from "@mdi/react";
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import { useContext } from "react";
 import { ShopContext } from "../shop/page";
-
+import quantityReducer from "./quantityReducer";
 export const ProductGrid = () => {
   const { typeFilter, uniqueTypeFilter, sort } = useContext(ShopContext);
   const itemDB = itemData;
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const [quantities, setQuantities] = useState({});
+  const [quantities, dispatchQuantity] = useReducer(quantityReducer, {});
 
   const routerPush = (item) => {
     router.push(`/shop/${item.id}`);
@@ -104,27 +104,13 @@ export const ProductGrid = () => {
     return arr.filter((item) => item.name.includes(`${sort.search}`));
   };
 
-  const handleQuantity = (actionType, item) => {
-    switch (actionType) {
-      case "inc":
-        setQuantities({
-          ...quantities,
-          [`${item.id}`]: quantities[`${item.id}`] + 1,
-        });
-        break;
-      case "dec":
-        setQuantities({
-          ...quantities,
-          [`${item.id}`]: quantities[`${item.id}`] - 1,
-        });
-        break;
-    }
-  };
-
   const ItemDiv = () =>
     searchItems(sortItems([...filterItems()])).map((item) => {
       if (!quantities[`${item.id}`])
-        setQuantities({ ...quantities, [`${item.id}`]: 1 });
+        dispatchQuantity({
+          type: "setAmount",
+          payload: { item: item, amount: 1 },
+        });
       return (
         <div key={item.id}>
           <div
@@ -193,7 +179,10 @@ export const ProductGrid = () => {
                     color={itemColor(item)}
                     onClick={() => {
                       if (quantities[`${item.id}`] > 1) {
-                        handleQuantity("dec", item);
+                        dispatchQuantity({
+                          type: `decrement`,
+                          payload: { item: item },
+                        });
                       }
                     }}
                     className="w-[20px] h-[20px] bg-white rounded select-none hover:bg-yellow-200"
@@ -214,7 +203,10 @@ export const ProductGrid = () => {
                     color={itemColor(item)}
                     onClick={() => {
                       if (quantities[`${item.id}`] < 99) {
-                        handleQuantity("inc", item);
+                        dispatchQuantity({
+                          type: `increment`,
+                          payload: { item: item },
+                        });
                       }
                     }}
                     className="w-[20px] h-[20px] bg-white rounded select-none hover:bg-yellow-200"

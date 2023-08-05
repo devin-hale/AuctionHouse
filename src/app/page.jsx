@@ -1,5 +1,6 @@
 "use client";
 import { MarketingSC } from "./components/marketingShowCase";
+import NavBar2 from "./components/navBar copy";
 
 export default function Home() {
   return (

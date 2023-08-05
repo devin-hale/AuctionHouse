@@ -1,26 +1,29 @@
 "use client";
 import { useSelector } from "react-redux";
 import Image from "next/image";
+import { useMemo } from "react";
+import { useCallback } from "react";
 
 export const CartCost = () => {
   const cart = useSelector((state) => state.cart.value);
 
   const individualCostMultiplier = (itemQuantity, priceG, priceS, priceC) => {
-    const totalCopper = (priceG * 10000 + priceS * 100 + priceC) * itemQuantity;
-    return totalCopper;
+    return (priceG * 10000 + priceS * 100 + priceC) * itemQuantity;
   };
 
-  const totalCartCopper = cart.reduce(
-    (accumulator, currentItem) =>
-      accumulator +
-      individualCostMultiplier(
-        currentItem.amount,
-        currentItem.item.priceG,
-        currentItem.item.priceS,
-        currentItem.item.priceC
-      ),
-    0
-  );
+  const totalCartCopper = useMemo(() => {
+    return cart.reduce(
+      (accumulator, currentItem) =>
+        accumulator +
+        individualCostMultiplier(
+          currentItem.amount,
+          currentItem.item.priceG,
+          currentItem.item.priceS,
+          currentItem.item.priceC
+        ),
+      0
+    );
+  }, [cart]);
 
   const totalGoldCostAddUp = (totalCopper) => {
     const totalG = Math.floor(totalCopper / 10000);
