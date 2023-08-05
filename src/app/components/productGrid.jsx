@@ -235,6 +235,7 @@ export const ProductGrid = ({ typeFilter, uniqueTypeFilter, sort }) => {
                       quantity: quantities[`${item.id}`],
                     })
                   );
+                  router.push(`/cart`);
                 }}
                 className={`p-2 font-semibold text-black bg-white rounded shadow-[0_0_3px_rgba(0,0,0,.25)] hover:bg-yellow-200 hover:transition-all transition-all m-auto`}
               >

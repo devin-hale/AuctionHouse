@@ -4,6 +4,7 @@ import Image from "next/image";
 import NavBar from "@/app/components/navBar";
 import { useState } from "react";
 import { addProduct } from "@/app/components/cartSlice";
+import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import Icon from "@mdi/react";
 import { mdiPlus, mdiMinus, mdiArrowLeftBox } from "@mdi/js";
@@ -13,6 +14,7 @@ const ProductDetail = ({ params }) => {
   const [quantity, setQuantity] = useState(1);
   const itemDB = itemData.items;
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const routerPrefetch = () => {
     router.prefetch(`/shop`);
@@ -237,6 +239,16 @@ const ProductDetail = ({ params }) => {
             <button
               className="p-2 font-semibold text-black bg-amber-300 rounded shadow-[0_0_5px_rgba(0,0,0,.5)] hover:bg-yellow-200 hover:transition-all transition-all h-fit"
               type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                dispatch(
+                  addProduct({
+                    item: item,
+                    quantity: quantity,
+                  })
+                );
+                router.push(`/cart`);
+              }}
             >
               Add to Cart
             </button>

@@ -13,7 +13,7 @@ export default function Home() {
         <p className=" line-clamp-1">The Auction House</p>
       </div>
       <MarketingSC />
-      <div className="mt-[40px] sm:mt-auto sm:h-[400px] w-[100%] overflow-hidden sm:absolute sm:bottom-0 flex flex-col-reverse sm:flex-row items-start">
+      <div className="mt-[40px] sm:mt-auto sm:h-[400px] w-[100%] sm:overflow-hidden sm:absolute sm:bottom-0 flex flex-col-reverse sm:flex-row items-start">
         <img
           src="./gallywix.png"
           alt=""

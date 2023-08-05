@@ -1,6 +1,6 @@
 const Loading = () => {
   return (
-    <div className="relative m-auto">
+    <div className="mt-[300px] relative m-auto">
       <div className="loadingAnim h-[100px] w-[100px] m-auto text-center">
         <img
           src="./assets/icons/coinLogo.svg"
