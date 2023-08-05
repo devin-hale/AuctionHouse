@@ -42,14 +42,6 @@ const NavBar = () => {
           >
             Shop
           </Link>
-          <Link
-            className={`hover:transition-all border-b-2 hover:border-red-400 p-5 transition-all ${
-              path === `/about` ? `border-b-red-400` : null
-            }`}
-            href="/"
-          >
-            About
-          </Link>
         </div>
         <Link
           className={`flex-nowrap hover:transition-all hover:border-red-400 flex flex-row p-5 transition-all border-b-2 ${

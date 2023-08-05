@@ -8,6 +8,35 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+.loadingAnim {
+  animation: loadAnim 1s linear infinite;
+  border-radius: 50%;
+  border-color: red;
+  border: 2px solid red;
+  border-top-color: black;
+  padding: 5px;
+}
+
+.loadingAnim2 {
+  animation: loadAnim2 1s linear infinite;}
+
+@keyframes loadAnim {
+  0% {
+    transform:  rotate(0deg);
+  }
+  100% {
+    transform:  rotate(360deg);
+  }
+}
+
+@keyframes loadAnim2 {
+  0% {
+    transform:  rotate(0deg);
+  }
+  100% {
+    transform:  rotate(-360deg);
+  }
+}
 
 
 
